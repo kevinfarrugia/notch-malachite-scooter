@@ -35,7 +35,7 @@
     </div>
     <script>
       const getTime = (date) => { const coeff = 1000 * 5; return new
-      Date(Math.round(date.getTime() / coeff) * coeff).toUTCString(); }; let
+      Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString(); }; let
       date = new Date(); document.getElementById("time").innerHTML =
       getTime(date);
     </script>
