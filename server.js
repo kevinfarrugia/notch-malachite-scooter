@@ -84,6 +84,29 @@ fastify.get("/no-cache", function (request, reply) {
   return reply;
 });
 
+fastify.get("/max-age", function (request, reply) {
+  let params = {
+    time: getTime(new Date()),
+    title: "no-cache",
+    data: generateRandomHtml(),
+  };
+
+  const etag = md5(getTime(new Date()));
+
+  if (etag === request.headers["if-none-match"]) {
+    reply.statusCode = 304;
+    reply.send();
+  } else {
+    reply.headers({
+      "cache-control": "private, no-cache",
+      etag,
+    });
+    reply.view("/src/pages/index.hbs", params);
+  }
+
+  return reply;
+});
+
 fastify.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
   function (err, address) {
