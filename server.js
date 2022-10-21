@@ -2,14 +2,14 @@ const {createHash} = require("crypto");
 const path = require("path");
 
 const getTime = (date) => { 
-  const coeff = 1000 * 5;
+  const coeff = 1000 * 10;
   return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
 }
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
 const generateRandomHtml = () =>
-  `${[...Array(500)]
+  `${[...Array(100)]
     .map(
       () =>
         "<p class='content'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta id, tempora rem accusamus ab ex, ratione ad exercitationem libero laudantium fugit reiciendis corrupti quis ipsam dolorum maxime perspiciatis nemo?</p>"
@@ -61,10 +61,10 @@ fastify.get("/no-store", function (request, reply) {
   return reply;
 });
 
-fastify.get("/no-cache", function (request, reply) {
+fastify.get("/etag", function (request, reply) {
   let params = {
     time: getTime(new Date()),
-    title: "no-cache",
+    title: "etag",
     data: generateRandomHtml(),
   };
 
@@ -75,8 +75,31 @@ fastify.get("/no-cache", function (request, reply) {
     reply.send();
   } else {
     reply.headers({
-      "cache-control": "private, no-cache",
+      "cache-control": "no-cache",
       etag,
+    });
+    reply.view("/src/pages/index.hbs", params);
+  }
+
+  return reply;
+});
+
+fastify.get("/last-modified", function (request, reply) {
+  const time = getTime(new Date());
+  
+  let params = {
+    time,
+    title: "last-modified",
+    data: generateRandomHtml(),
+  };
+
+  if (time === request.headers["if-modified-since"]) {
+    reply.statusCode = 304;
+    reply.send();
+  } else {
+    reply.headers({
+      "cache-control": "no-cache",
+      "last-modified": time,
     });
     reply.view("/src/pages/index.hbs", params);
   }
@@ -87,7 +110,7 @@ fastify.get("/no-cache", function (request, reply) {
 fastify.get("/max-age", function (request, reply) {
   let params = {
     time: getTime(new Date()),
-    title: "max-age=5",
+    title: "max-age=30",
     data: generateRandomHtml(),
   };
 
@@ -98,7 +121,7 @@ fastify.get("/max-age", function (request, reply) {
     reply.send();
   } else {
     reply.headers({
-      "cache-control": "max-age=5",
+      "cache-control": "max-age=30",
       etag,
     });
     reply.view("/src/pages/index.hbs", params);
