@@ -87,7 +87,7 @@ fastify.get("/no-cache", function (request, reply) {
 fastify.get("/max-age", function (request, reply) {
   let params = {
     time: getTime(new Date()),
-    title: "no-cache",
+    title: "max-age=60",
     data: generateRandomHtml(),
   };
 
@@ -98,7 +98,7 @@ fastify.get("/max-age", function (request, reply) {
     reply.send();
   } else {
     reply.headers({
-      "cache-control": "private, no-cache",
+      "cache-control": "max-age=60",
       etag,
     });
     reply.view("/src/pages/index.hbs", params);

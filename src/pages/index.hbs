@@ -6,29 +6,38 @@
   </head>
   <body>
     <pre>{{title}}</pre>
-    <p>
-      Generated on origin:
-      <strong>{{time}}</strong>
-      | Current time
-      <strong id="time"></strong>
-    </p>
+    <table>
+      <tr>
+        <td>
+          Server:
+        </td>
+        <td>
+          <strong>{{time}}</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Client:
+        </td>
+        <td>
+          <strong id="time">&nbsp;</strong>
+        </td>
+      </tr>
+    </table>
     <nav>
       <a href="/no-store">no-store</a>
       <a href="/no-cache">no-cache</a>
-      <a href="/max-age-60">private, max-age=0</a>
+      <a href="/max-age">max-age=60</a>
     </nav>
     <br />
     <div class="wrapper">
       {{{data}}}
     </div>
     <script>
-      const getTime = (date) => { 
-        const coeff = 1000 * 5;
-        return new Date(Math.round(date.getTime() / coeff) * coeff).toUTCString();
-      }
-      
-      let date = new Date();
-      document.getElementById("time").innerHTML = getTime(date);      
+      const getTime = (date) => { const coeff = 1000 * 5; return new
+      Date(Math.round(date.getTime() / coeff) * coeff).toUTCString(); }; let
+      date = new Date(); document.getElementById("time").innerHTML =
+      getTime(date);
     </script>
   </body>
 </html>
