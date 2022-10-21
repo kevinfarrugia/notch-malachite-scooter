@@ -36,12 +36,7 @@
       const getTime = (date) => date.toUTCString();
       
       let date = new Date();
-      document.getElementById("time").innerHTML = getTime(date);
-      
-      setInterval(() => {
-        date = new Date();
-        document.getElementById("time").innerHTML = getTime(date);
-      }, 1000);
+      document.getElementById("time").innerHTML = getTime(date);      
     </script>
   </body>
 </html>

@@ -1,6 +1,9 @@
+const {createHash} = require("crypto");
 const path = require("path");
 
 const getTime = (date) => date.toUTCString();
+
+const md5 = (input) => createHash("md5").update(input).digest("hex");
 
 const generateRandomHtml = () =>
   `${[...Array(500)]
@@ -28,12 +31,51 @@ fastify.register(require("@fastify/view"), {
 fastify.get("/", function (request, reply) {
   let params = {
     time: getTime(new Date()),
+    title: "Caching Demo",
+    data: generateRandomHtml(),
+  };
+
+  reply.headers({
+    "cache-control": "no-store",
+  });
+  reply.view("/src/pages/index.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/no-store", function (request, reply) {
+  let params = {
+    time: getTime(new Date()),
     title: "no-store",
     data: generateRandomHtml(),
   };
 
-  reply.headers({});
+  reply.headers({
+    "cache-control": "no-store",
+  });
   reply.view("/src/pages/index.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/no-cache", function (request, reply) {
+  let params = {
+    time: getTime(new Date()),
+    title: "no-cache",
+    data: generateRandomHtml(),
+  };
+
+  const etag = md5(getTime(new Date()));
+
+  if (etag === request.headers["if-none-match"]) {
+    reply.statusCode = 304;
+  } else {
+    reply.headers({
+      "cache-control": "private, no-cache",
+      etag,
+    });
+    reply.view("/src/pages/index.hbs", params);
+  }
 
   return reply;
 });
