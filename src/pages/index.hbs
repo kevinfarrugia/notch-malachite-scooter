@@ -35,10 +35,13 @@
       {{{data}}}
     </div>
     <script>
-      const getTime = (date) => { const coeff = 1000 * 5; return new
-      Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString(); }; let
-      date = new Date(); document.getElementById("time").innerHTML =
-      getTime(date);
+      const getTime = (date) => { 
+        const coeff = 1000 * 10;
+        return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
+      };
+      
+      let date = new Date();
+      document.getElementById("time").innerHTML = getTime(date);
     </script>
   </body>
 </html>
