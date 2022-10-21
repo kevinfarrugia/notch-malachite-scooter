@@ -1,10 +1,14 @@
 const path = require("path");
 
-const getTime = (date) =>
-  `${date.getHours().toString().padStart(2, "0")}:${date
-    .getMinutes()
-    .toString()
-    .padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`;
+const getTime = (date) => date.toUTCString();
+
+const generateRandomHtml = () =>
+  `${[...Array(500)]
+    .map(
+      () =>
+        "<p class='content'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta id, tempora rem accusamus ab ex, ratione ad exercitationem libero laudantium fugit reiciendis corrupti quis ipsam dolorum maxime perspiciatis nemo?</p>"
+    )
+    .join("")}`;
 
 const fastify = require("fastify")({
   logger: false,
@@ -23,10 +27,15 @@ fastify.register(require("@fastify/view"), {
 
 fastify.get("/", function (request, reply) {
   let params = {
-    greeting: "Hello Node!",
+    time: getTime(new Date()),
+    title: "no-store",
+    data: generateRandomHtml(),
   };
 
-  return reply.view("/src/pages/index.hbs", params);
+  reply.headers({});
+  reply.view("/src/pages/index.hbs", params);
+
+  return reply;
 });
 
 fastify.listen(

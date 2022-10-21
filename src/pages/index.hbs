@@ -2,11 +2,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.v{{version}}.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <pre>{{title}}</pre>
-    <p>{{text}}</p>
     <p>
       Generated on origin:
       <strong>{{time}}</strong>
@@ -31,14 +30,18 @@
     </nav>
     <br />
     <div class="wrapper">
+      {{{data}}}
     </div>
     <script>
-      const getTime = (date) => `${date.getHours().toString().padStart(2,
-      "0")}:${date .getMinutes() .toString() .padStart(2,
-      "0")}:${date.getSeconds().toString().padStart(2, "0")}`; let date = new
-      Date(); document.getElementById("time").innerHTML = getTime(date);
-      setInterval(() => { date = new Date();
-      document.getElementById("time").innerHTML = getTime(date); }, 1000);
+      const getTime = (date) => date.toUTCString();
+      
+      let date = new Date();
+      document.getElementById("time").innerHTML = getTime(date);
+      
+      setInterval(() => {
+        date = new Date();
+        document.getElementById("time").innerHTML = getTime(date);
+      }, 1000);
     </script>
   </body>
 </html>
