@@ -1,7 +1,10 @@
 const {createHash} = require("crypto");
 const path = require("path");
 
-const getTime = (date) => date.toUTCString();
+const getTime = (date) => { 
+  const coeff = 1000 * 5;
+  return new Date(Math.round(date.getTime() / coeff) * coeff).toUTCString();
+}
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
@@ -69,6 +72,7 @@ fastify.get("/no-cache", function (request, reply) {
 
   if (etag === request.headers["if-none-match"]) {
     reply.statusCode = 304;
+    reply.send();
   } else {
     reply.headers({
       "cache-control": "private, no-cache",
