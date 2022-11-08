@@ -6,18 +6,19 @@
     <title>Learn Performance - Caching</title>
   </head>
   <body>
-    <div class="title">
-      <h1>
-        Learn Performance - Caching
-      </h1>
-    </div>
     <div class="content">
+      <div class="title">
+        <h1>
+          Learn Performance - Caching
+        </h1>
+      </div>
       <nav class="drawer">
         <ol>
-          <li><a href="/0"><span class="step">no-store</span></a></li>
-          <li><a href="/1"><span class="step">etag</span></a></li>
-          <li><a href="/2"><span class="step">last-modified</span></a></li>
-          <li><a href="/3"><span class="step">max-age</span></a></li>
+          <li selected><a href="/"><span class="step">Welcome</span></a></li>
+          <li><a href="/1"><span class="step">no-store</span></a></li>
+          <li><a href="/2"><span class="step">etag</span></a></li>
+          <li><a href="/3"><span class="step">last-modified</span></a></li>
+          <li><a href="/4"><span class="step">max-age</span></a></li>
         </ol>
       </nav>
       <main>
@@ -44,6 +45,11 @@
           {{{data}}}
         </div>
       </main>
+      <footer>
+        <a href="#" id="previous-step" aria-hidden="" disappear="" tabindex="-1">Back</a>
+        <a href="#" id="next-step">Next</a>
+        <a href="/" id="done" hidden="" class="no-return-url" data-title="Demo complete">Done</a>
+      </footer>
     </div>
     <script>
       const getTime = (date) => { const coeff = 1000 * 10; return new
