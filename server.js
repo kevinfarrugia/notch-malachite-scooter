@@ -1,7 +1,7 @@
 const {createHash} = require("crypto");
 const path = require("path");
 
-const getTime = require("./utils");
+const {getTime, generateRandomString} = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
@@ -23,16 +23,20 @@ fastify.register(require("@fastify/view"), {
 /** end: configure fastly **/
 
 /** start: routes **/
+
+// welcome route
 fastify.get("/", function (request, reply) {
-  let params = {    
-    title: "Welcome"
+  let params = {
+    time: getTime(),
+    title: "Welcome",
   };
 
-  reply.view("/src/pages/welcome.hbs", params);
+  reply.view("/src/pages/index.hbs", params);
 
   return reply;
 });
 
+/** start: demo routes **/
 // fastify.get("/1", function (request, reply) {
 //   let params = {
 //     time: getTime(new Date()),
@@ -116,6 +120,8 @@ fastify.get("/", function (request, reply) {
 
 //   return reply;
 // });
+/** end: demo routes **/
+
 /** end: routes **/
 
 // start the fastify server

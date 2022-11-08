@@ -11,7 +11,9 @@ const generateRandomString = (min, max) => {
 };
 
 // returns the current server time in UTC format
-const getTime = (date) => { 
+const getTime = (date) => {
   const coeff = 1000 * 10;
   return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
-}
+};
+
+module.exports = { generateRandomString, getTime };
