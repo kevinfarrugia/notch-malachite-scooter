@@ -23,6 +23,18 @@
       </nav>
       <main>
         <div class="wrapper">
+          <h2>
+            {{title}}
+          </h2>
+          <div>
+            <p>
+              Welcome to this demo, part of the web.dev Learn Performance
+              series. Use the pane on the left to navigate through the different
+              demos, or click the
+              <i>Next</i>
+              button below.
+            </p>
+          </div>
           <table>
             <tr>
               <td>
@@ -43,25 +55,18 @@
           </table>
           <br />
           {{{data}}}
+          <footer>
+            <a
+              href="#"
+              id="previous-step"
+              aria-hidden=""
+              tabindex="-1"
+            >Back</a>
+            <a href="#" id="next-step">Next</a>
+            <a href="/" id="done" hidden data-title="Demo complete">Done</a>
+          </footer>
         </div>
       </main>
-      <footer>
-        <a
-          href="#"
-          id="previous-step"
-          aria-hidden=""
-          disappear
-          tabindex="-1"
-        >Back</a>
-        <a href="#" id="next-step">Next</a>
-        <a
-          href="/"
-          id="done"
-          hidden=""
-          class="no-return-url"
-          data-title="Demo complete"
-        >Done</a>
-      </footer>
     </div>
     <script>
       const getTime = (date) => { const coeff = 1000 * 10; return new

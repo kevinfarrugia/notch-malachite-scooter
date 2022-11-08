@@ -122,11 +122,10 @@ nav ol li[selected] a .step::before {
 
 main {
   grid-area: main;
-  grid-row-start: 2;
-  grid-row-end: 4;
   padding: 1rem 0.5rem;
   height: calc(100vh - 4rem);
   overflow: auto;
+  position: relative;
 }
 
 .wrapper {
@@ -137,10 +136,15 @@ main {
 }
 
 footer {
+  grid-c
   padding: 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 footer #done,

@@ -36,26 +36,26 @@ fastify.get("/", function (request, reply) {
 });
 
 /** start: demo routes **/
-// fastify.get("/1", function (request, reply) {
-//   let params = {
-//     time: getTime(new Date()),
-//     title: "no-store",
-//     data: generateRandomHtml(),
-//   };
+fastify.get("/1", function (request, reply) {
+  let params = {
+    time: getTime(new Date()),
+    title: "no-store",
+    data: generateRandomString(100, 200),
+  };
 
-//   reply.headers({
-//     "cache-control": "no-store",
-//   });
-//   reply.view("/src/pages/demo.hbs", params);
+  reply.headers({
+    "cache-control": "no-store",
+  });
+  reply.view("/src/pages/demo.hbs", params);
 
-//   return reply;
-// });
+  return reply;
+});
 
 // fastify.get("/2", function (request, reply) {
 //   let params = {
 //     time: getTime(new Date()),
 //     title: "etag",
-//     data: generateRandomHtml(),
+//     data: generateRandomString(),
 //   };
 
 //   const etag = md5(getTime(new Date()));
@@ -80,7 +80,7 @@ fastify.get("/", function (request, reply) {
 //   let params = {
 //     time,
 //     title: "last-modified",
-//     data: generateRandomHtml(),
+//     data: generateRandomString(),
 //   };
 
 //   if (time === request.headers["if-modified-since"]) {
@@ -101,7 +101,7 @@ fastify.get("/", function (request, reply) {
 //   let params = {
 //     time: getTime(new Date()),
 //     title: "max-age=30",
-//     data: generateRandomHtml(),
+//     data: generateRandomString(),
 //   };
 
 //   const etag = md5(getTime(new Date()));
