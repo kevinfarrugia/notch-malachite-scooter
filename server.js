@@ -27,7 +27,6 @@ fastify.register(require("@fastify/view"), {
 // welcome route
 fastify.get("/", function (request, reply) {
   let params = {
-    time: getTime(),
     title: "Welcome",
   };
 
@@ -47,7 +46,7 @@ fastify.get("/", function (request, reply) {
 //   reply.headers({
 //     "cache-control": "no-store",
 //   });
-//   reply.view("/src/pages/index.hbs", params);
+//   reply.view("/src/pages/demo.hbs", params);
 
 //   return reply;
 // });
@@ -69,7 +68,7 @@ fastify.get("/", function (request, reply) {
 //       "cache-control": "no-cache",
 //       etag,
 //     });
-//     reply.view("/src/pages/index.hbs", params);
+//     reply.view("/src/pages/demo.hbs", params);
 //   }
 
 //   return reply;
@@ -92,7 +91,7 @@ fastify.get("/", function (request, reply) {
 //       "cache-control": "no-cache",
 //       "last-modified": time,
 //     });
-//     reply.view("/src/pages/index.hbs", params);
+//     reply.view("/src/pages/demo.hbs", params);
 //   }
 
 //   return reply;
@@ -115,7 +114,7 @@ fastify.get("/", function (request, reply) {
 //       "cache-control": "max-age=30",
 //       etag,
 //     });
-//     reply.view("/src/pages/index.hbs", params);
+//     reply.view("/src/pages/demo.hbs", params);
 //   }
 
 //   return reply;

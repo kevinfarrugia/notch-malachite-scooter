@@ -23,12 +23,26 @@
       </nav>
       <main>
         <div class="wrapper">
-          <h2>
-            {{title}}
-          </h2>
-          <div>
-            Welcome to this demo, part of the web.dev Learn Performance series.
-          </div>
+          <table>
+            <tr>
+              <td>
+                Server:
+              </td>
+              <td>
+                <strong>{{time}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Client:
+              </td>
+              <td>
+                <strong id="time">&nbsp;</strong>
+              </td>
+            </tr>
+          </table>
+          <br />
+          {{{data}}}
         </div>
       </main>
       <footer>
@@ -36,14 +50,15 @@
           href="#"
           id="previous-step"
           aria-hidden=""
-          hidden
+          disappear
           tabindex="-1"
         >Back</a>
         <a href="#" id="next-step">Next</a>
         <a
           href="/"
           id="done"
-          hidden          
+          hidden=""
+          class="no-return-url"
           data-title="Demo complete"
         >Done</a>
       </footer>
