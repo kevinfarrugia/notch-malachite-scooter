@@ -22,33 +22,45 @@
         </ol>
       </nav>
       <main>
-        <table>
-          <tr>
-            <td>
-              Server:
-            </td>
-            <td>
-              <strong>{{time}}</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Client:
-            </td>
-            <td>
-              <strong id="time">&nbsp;</strong>
-            </td>
-          </tr>
-        </table>
-        <br />
         <div class="wrapper">
+          <table>
+            <tr>
+              <td>
+                Server:
+              </td>
+              <td>
+                <strong>{{time}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Client:
+              </td>
+              <td>
+                <strong id="time">&nbsp;</strong>
+              </td>
+            </tr>
+          </table>
+          <br />
           {{{data}}}
         </div>
       </main>
       <footer>
-        <a href="#" id="previous-step" aria-hidden="" disappear tabindex="-1">Back</a>
+        <a
+          href="#"
+          id="previous-step"
+          aria-hidden=""
+          disappear
+          tabindex="-1"
+        >Back</a>
         <a href="#" id="next-step">Next</a>
-        <a href="/" id="done" hidden="" class="no-return-url" data-title="Demo complete">Done</a>
+        <a
+          href="/"
+          id="done"
+          hidden=""
+          class="no-return-url"
+          data-title="Demo complete"
+        >Done</a>
       </footer>
     </div>
     <script>

@@ -8,14 +8,9 @@ const getTime = (date) => {
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
-const generateRandomHtml = () =>
-  `${[...Array(100)]
-    .map(
-      () =>
-        "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta id, tempora rem accusamus ab ex, ratione ad exercitationem libero laudantium fugit reiciendis corrupti quis ipsam dolorum maxime perspiciatis nemo?</p>"
-    )
-    .join("")}`;
 
+
+/** start: configure fastly **/
 const fastify = require("fastify")({
   logger: false,
 });
@@ -30,7 +25,9 @@ fastify.register(require("@fastify/view"), {
     handlebars: require("handlebars"),
   },
 });
+/** end: configure fastly **/
 
+/** start: routes **/
 fastify.get("/", function (request, reply) {
   let params = {
     time: getTime(new Date()),
@@ -46,7 +43,7 @@ fastify.get("/", function (request, reply) {
   return reply;
 });
 
-fastify.get("/no-store", function (request, reply) {
+fastify.get("/1", function (request, reply) {
   let params = {
     time: getTime(new Date()),
     title: "no-store",
@@ -61,7 +58,7 @@ fastify.get("/no-store", function (request, reply) {
   return reply;
 });
 
-fastify.get("/etag", function (request, reply) {
+fastify.get("/2", function (request, reply) {
   let params = {
     time: getTime(new Date()),
     title: "etag",
@@ -84,7 +81,7 @@ fastify.get("/etag", function (request, reply) {
   return reply;
 });
 
-fastify.get("/last-modified", function (request, reply) {
+fastify.get("/3", function (request, reply) {
   const time = getTime(new Date());
   
   let params = {
@@ -107,7 +104,7 @@ fastify.get("/last-modified", function (request, reply) {
   return reply;
 });
 
-fastify.get("/max-age", function (request, reply) {
+fastify.get("/4", function (request, reply) {
   let params = {
     time: getTime(new Date()),
     title: "max-age=30",
@@ -129,7 +126,9 @@ fastify.get("/max-age", function (request, reply) {
 
   return reply;
 });
+/** end: routes **/
 
+// start the fastify server
 fastify.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
   function (err, address) {
