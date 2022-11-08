@@ -8,9 +8,7 @@
   <body>
     <div class="content">
       <div class="title">
-        <h1>
-          Learn Performance - Caching
-        </h1>
+        {{> title}}
       </div>
       <nav class="drawer">
         {{> nav }}
@@ -18,7 +16,7 @@
       <main>
         <div class="wrapper">
           <h2>
-            {{title}}
+            {{title title=bob }}
           </h2>
           <div>
             <p>
@@ -48,14 +46,9 @@
         </div>
       </main>
       <footer>
-        <a href="#" id="previous-step" aria-hidden="" tabindex="-1">Back</a>
-        <a href="#" id="next-step">Next</a>
-        <a href="/" id="done" hidden data-title="Demo complete">Done</a>
+        {{> footer}}
       </footer>
     </div>
-    <script>
-
-    </script>
     <script>
       const getTime = (date) => { const coeff = 1000 * 10; return new
       Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString(); }; let

@@ -1,7 +1,7 @@
-const {createHash} = require("crypto");
+const { createHash } = require("crypto");
 const path = require("path");
 
-const {getTime, generateRandomString} = require("./utils");
+const { getTime, generateRandomString } = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
@@ -18,9 +18,13 @@ fastify.register(require("@fastify/static"), {
 fastify.register(require("@fastify/view"), {
   engine: {
     handlebars: require("handlebars"),
-    options: {
-     nav: "/src/partials/nav.hbs" 
-    }
+  },
+  options: {
+    partials: {
+      nav: "/src/partials/nav.hbs",
+      footer: "/src/partials/footer.hbs",
+      title: "/src/partials/title.hbs",
+    },
   },
 });
 /** end: configure fastly **/
@@ -30,7 +34,7 @@ fastify.register(require("@fastify/view"), {
 // welcome route
 fastify.get("/", function (request, reply) {
   let params = {
-    title: "Welcome"
+    title: "Welcome",
   };
 
   reply.view("/src/pages/index.hbs", params);
@@ -80,7 +84,7 @@ fastify.get("/1", function (request, reply) {
 
 // fastify.get("/3", function (request, reply) {
 //   const time = getTime(new Date());
-  
+
 //   let params = {
 //     time,
 //     title: "last-modified",

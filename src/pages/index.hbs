@@ -8,18 +8,10 @@
   <body>
     <div class="content">
       <div class="title">
-        <h1>
-          Learn Performance - Caching
-        </h1>
+        {{> title}}
       </div>
       <nav class="drawer">
-        <ol>
-          <li selected><a href="/"><span class="step">Welcome</span></a></li>
-          <li><a href="/1"><span class="step">no-store</span></a></li>
-          <li><a href="/2"><span class="step">etag</span></a></li>
-          <li><a href="/3"><span class="step">last-modified</span></a></li>
-          <li><a href="/4"><span class="step">max-age</span></a></li>
-        </ol>
+        {{> nav}}
       </nav>
       <main>
         <div class="wrapper">
@@ -35,19 +27,11 @@
               button below.
             </p>
           </div>
-          <footer>
-            <a
-              href="#"
-              id="previous-step"
-              aria-hidden=""
-              disappear
-              tabindex="-1"
-            >Back</a>
-            <a href="#" id="next-step">Next</a>
-            <a href="/" id="done" hidden data-title="Demo complete">Done</a>
-          </footer>
         </div>
       </main>
+      <footer>
+        {{> footer}}
+      </footer>
     </div>
   </body>
 </html>
