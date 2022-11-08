@@ -1,6 +1,5 @@
 const {createHash} = require("crypto");
 const path = require("path");
-const Handlebars = require("handlebars");
 
 const {getTime, generateRandomString} = require("./utils");
 
@@ -16,11 +15,12 @@ fastify.register(require("@fastify/static"), {
   prefix: "/",
 });
 
-const hbs = handlebars.registerPartial('myPartial', '{{prefix}}');
-
 fastify.register(require("@fastify/view"), {
   engine: {
-    handlebars: hbs,
+    handlebars: require("handlebars"),
+    options: {
+     nav: "/src/partials/nav.hbs" 
+    }
   },
 });
 /** end: configure fastly **/
