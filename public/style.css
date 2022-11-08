@@ -153,6 +153,10 @@ footer #next-step {
   text-decoration: none;
 }
 
+footer [disappear] {
+  visibility: hidden;
+}
+
 footer #next-step {
   background-color: #1a73e8;
   color: #ffffff;

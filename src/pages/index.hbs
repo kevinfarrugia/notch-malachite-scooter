@@ -27,32 +27,27 @@
             {{title}}
           </h2>
           <div>
-            Welcome to this demo, part of the web.dev Learn Performance series.
+            <p>
+              Welcome to this demo, part of the web.dev Learn Performance
+              series. Use the pane on the left to navigate through the different
+              demos, or click the
+              <i>Next</i>
+              button below.
+            </p>
           </div>
+          <footer>
+            <a
+              href="#"
+              id="previous-step"
+              aria-hidden=""
+              disappear
+              tabindex="-1"
+            >Back</a>
+            <a href="#" id="next-step">Next</a>
+            <a href="/" id="done" hidden data-title="Demo complete">Done</a>
+          </footer>
         </div>
       </main>
-      <footer>
-        <a
-          href="#"
-          id="previous-step"
-          aria-hidden=""
-          hidden
-          tabindex="-1"
-        >Back</a>
-        <a href="#" id="next-step">Next</a>
-        <a
-          href="/"
-          id="done"
-          hidden          
-          data-title="Demo complete"
-        >Done</a>
-      </footer>
     </div>
-    <script>
-      const getTime = (date) => { const coeff = 1000 * 10; return new
-      Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString(); }; let
-      date = new Date(); document.getElementById("time").innerHTML =
-      getTime(date);
-    </script>
   </body>
 </html>
