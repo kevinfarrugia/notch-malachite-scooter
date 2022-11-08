@@ -14,7 +14,7 @@
       </div>
       <nav class="drawer">
         <ol>
-          <li selected><a href="/"><span class="step">Welcome</span></a></li>
+          <li {{testId !== ""}}><a href="/"><span class="step">Welcome</span></a></li>
           <li><a href="/1"><span class="step">no-store</span></a></li>
           <li><a href="/2"><span class="step">etag</span></a></li>
           <li><a href="/3"><span class="step">last-modified</span></a></li>
@@ -28,11 +28,7 @@
           </h2>
           <div>
             <p>
-              Welcome to this demo, part of the web.dev Learn Performance
-              series. Use the pane on the left to navigate through the different
-              demos, or click the
-              <i>Next</i>
-              button below.
+             // TODO
             </p>
           </div>
           <table>
@@ -55,18 +51,13 @@
           </table>
           <br />
           {{{data}}}
-          <footer>
-            <a
-              href="#"
-              id="previous-step"
-              aria-hidden=""
-              tabindex="-1"
-            >Back</a>
-            <a href="#" id="next-step">Next</a>
-            <a href="/" id="done" hidden data-title="Demo complete">Done</a>
-          </footer>
         </div>
       </main>
+      <footer>
+        <a href="#" id="previous-step" aria-hidden="" tabindex="-1">Back</a>
+        <a href="#" id="next-step">Next</a>
+        <a href="/" id="done" hidden data-title="Demo complete">Done</a>
+      </footer>
     </div>
     <script>
       const getTime = (date) => { const coeff = 1000 * 10; return new
