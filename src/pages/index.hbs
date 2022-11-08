@@ -6,7 +6,20 @@
     <title>Learn Performance - Caching</title>
   </head>
   <body>
-    <pre>{{title}}</pre>
+    <div class="title">
+    <h1>
+      Learn Performance - Caching
+    </h1>
+    </div>
+    <div class="content">      
+    <aside>
+      <nav>
+      <a href="/no-store">no-store</a>
+      <a href="/etag">etag</a>
+      <a href="/last-modified">last-modified</a>
+      <a href="/max-age">max-age</a>
+    </nav>
+    </aside>
     <table>
       <tr>
         <td>
@@ -24,17 +37,12 @@
           <strong id="time">&nbsp;</strong>
         </td>
       </tr>
-    </table>
-    <nav>
-      <a href="/no-store">no-store</a>
-      <a href="/etag">etag</a>
-      <a href="/last-modified">last-modified</a>
-      <a href="/max-age">max-age</a>
-    </nav>
+    </table>    
     <br />
     <div class="wrapper">
       {{{data}}}
     </div>
+    </div>      
     <script>
       const getTime = (date) => { 
         const coeff = 1000 * 10;
