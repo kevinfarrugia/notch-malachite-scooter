@@ -1,5 +1,6 @@
 const {createHash} = require("crypto");
 const path = require("path");
+const Handlebars = require("handlebars");
 
 const {getTime, generateRandomString} = require("./utils");
 
@@ -15,9 +16,11 @@ fastify.register(require("@fastify/static"), {
   prefix: "/",
 });
 
+const hbs = handlebars.registerPartial('myPartial', '{{prefix}}');
+
 fastify.register(require("@fastify/view"), {
   engine: {
-    handlebars: require("handlebars"),
+    handlebars: hbs,
   },
 });
 /** end: configure fastly **/
@@ -27,7 +30,7 @@ fastify.register(require("@fastify/view"), {
 // welcome route
 fastify.get("/", function (request, reply) {
   let params = {
-    title: "Welcome",
+    title: "Welcome"
   };
 
   reply.view("/src/pages/index.hbs", params);
@@ -41,6 +44,7 @@ fastify.get("/1", function (request, reply) {
     time: getTime(new Date()),
     title: "no-store",
     data: generateRandomString(100, 200),
+    isWelcome: true,
   };
 
   reply.headers({
