@@ -7,50 +7,49 @@
   </head>
   <body>
     <div class="title">
-    <h1>
-      Learn Performance - Caching
-    </h1>
+      <h1>
+        Learn Performance - Caching
+      </h1>
     </div>
-    <div class="content">      
-    <aside>
-      <nav>
-      <a href="/no-store">no-store</a>
-      <a href="/etag">etag</a>
-      <a href="/last-modified">last-modified</a>
-      <a href="/max-age">max-age</a>
-    </nav>
-    </aside>
-    <table>
-      <tr>
-        <td>
-          Server:
-        </td>
-        <td>
-          <strong>{{time}}</strong>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Client:
-        </td>
-        <td>
-          <strong id="time">&nbsp;</strong>
-        </td>
-      </tr>
-    </table>    
-    <br />
-    <div class="wrapper">
-      {{{data}}}
+    <div class="content">
+      <nav class="drawer">
+        <ol>
+          <li><a href="/0"><span class="step">no-store</span></a></li>
+          <li><a href="/1"><span class="step">etag</span></a></li>
+          <li><a href="/2"><span class="step">last-modified</span></a></li>
+          <li><a href="/3"><span class="step">max-age</span></a></li>
+        </ol>
+      </nav>
+      <main>
+        <table>
+          <tr>
+            <td>
+              Server:
+            </td>
+            <td>
+              <strong>{{time}}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Client:
+            </td>
+            <td>
+              <strong id="time">&nbsp;</strong>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <div class="wrapper">
+          {{{data}}}
+        </div>
+      </main>
     </div>
-    </div>      
     <script>
-      const getTime = (date) => { 
-        const coeff = 1000 * 10;
-        return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
-      };
-      
-      let date = new Date();
-      document.getElementById("time").innerHTML = getTime(date);
+      const getTime = (date) => { const coeff = 1000 * 10; return new
+      Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString(); }; let
+      date = new Date(); document.getElementById("time").innerHTML =
+      getTime(date);
     </script>
   </body>
 </html>
