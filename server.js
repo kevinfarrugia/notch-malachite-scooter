@@ -1,14 +1,9 @@
 const {createHash} = require("crypto");
 const path = require("path");
 
-const getTime = (date) => { 
-  const coeff = 1000 * 10;
-  return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
-}
+const getTime = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
-
-
 
 /** start: configure fastly **/
 const fastify = require("fastify")({
@@ -29,103 +24,98 @@ fastify.register(require("@fastify/view"), {
 
 /** start: routes **/
 fastify.get("/", function (request, reply) {
-  let params = {
-    time: getTime(new Date()),
-    title: "Caching Demo",
-    data: generateRandomHtml(),
+  let params = {    
+    title: "Welcome"
   };
 
-  reply.headers({
-    "cache-control": "no-store",
-  });
-  reply.view("/src/pages/index.hbs", params);
+  reply.view("/src/pages/welcome.hbs", params);
 
   return reply;
 });
 
-fastify.get("/1", function (request, reply) {
-  let params = {
-    time: getTime(new Date()),
-    title: "no-store",
-    data: generateRandomHtml(),
-  };
+// fastify.get("/1", function (request, reply) {
+//   let params = {
+//     time: getTime(new Date()),
+//     title: "no-store",
+//     data: generateRandomHtml(),
+//   };
 
-  reply.headers({
-    "cache-control": "no-store",
-  });
-  reply.view("/src/pages/index.hbs", params);
+//   reply.headers({
+//     "cache-control": "no-store",
+//   });
+//   reply.view("/src/pages/index.hbs", params);
 
-  return reply;
-});
+//   return reply;
+// });
 
-fastify.get("/2", function (request, reply) {
-  let params = {
-    time: getTime(new Date()),
-    title: "etag",
-    data: generateRandomHtml(),
-  };
+// fastify.get("/2", function (request, reply) {
+//   let params = {
+//     time: getTime(new Date()),
+//     title: "etag",
+//     data: generateRandomHtml(),
+//   };
 
-  const etag = md5(getTime(new Date()));
+//   const etag = md5(getTime(new Date()));
 
-  if (etag === request.headers["if-none-match"]) {
-    reply.statusCode = 304;
-    reply.send();
-  } else {
-    reply.headers({
-      "cache-control": "no-cache",
-      etag,
-    });
-    reply.view("/src/pages/index.hbs", params);
-  }
+//   if (etag === request.headers["if-none-match"]) {
+//     reply.statusCode = 304;
+//     reply.send();
+//   } else {
+//     reply.headers({
+//       "cache-control": "no-cache",
+//       etag,
+//     });
+//     reply.view("/src/pages/index.hbs", params);
+//   }
 
-  return reply;
-});
+//   return reply;
+// });
 
-fastify.get("/3", function (request, reply) {
-  const time = getTime(new Date());
+// fastify.get("/3", function (request, reply) {
+//   const time = getTime(new Date());
   
-  let params = {
-    time,
-    title: "last-modified",
-    data: generateRandomHtml(),
-  };
+//   let params = {
+//     time,
+//     title: "last-modified",
+//     data: generateRandomHtml(),
+//   };
 
-  if (time === request.headers["if-modified-since"]) {
-    reply.statusCode = 304;
-    reply.send();
-  } else {
-    reply.headers({
-      "cache-control": "no-cache",
-      "last-modified": time,
-    });
-    reply.view("/src/pages/index.hbs", params);
-  }
+//   if (time === request.headers["if-modified-since"]) {
+//     reply.statusCode = 304;
+//     reply.send();
+//   } else {
+//     reply.headers({
+//       "cache-control": "no-cache",
+//       "last-modified": time,
+//     });
+//     reply.view("/src/pages/index.hbs", params);
+//   }
 
-  return reply;
-});
+//   return reply;
+// });
 
-fastify.get("/4", function (request, reply) {
-  let params = {
-    time: getTime(new Date()),
-    title: "max-age=30",
-    data: generateRandomHtml(),
-  };
+// fastify.get("/4", function (request, reply) {
+//   let params = {
+//     time: getTime(new Date()),
+//     title: "max-age=30",
+//     data: generateRandomHtml(),
+//   };
 
-  const etag = md5(getTime(new Date()));
+//   const etag = md5(getTime(new Date()));
 
-  if (etag === request.headers["if-none-match"]) {
-    reply.statusCode = 304;
-    reply.send();
-  } else {
-    reply.headers({
-      "cache-control": "max-age=30",
-      etag,
-    });
-    reply.view("/src/pages/index.hbs", params);
-  }
+//   if (etag === request.headers["if-none-match"]) {
+//     reply.statusCode = 304;
+//     reply.send();
+//   } else {
+//     reply.headers({
+//       "cache-control": "max-age=30",
+//       etag,
+//     });
+//     reply.view("/src/pages/index.hbs", params);
+//   }
 
-  return reply;
-});
+//   return reply;
+// });
 /** end: routes **/
 
 // start the fastify server
