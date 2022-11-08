@@ -23,7 +23,7 @@ fastify.register(require("@fastify/view"), {
     partials: {
       nav: "/src/partials/nav.hbs",
       footer: "/src/partials/footer.hbs",
-      title: "/src/partials/title.hbs",
+      heading: "/src/partials/heading.hbs",
     },
   },
 });
