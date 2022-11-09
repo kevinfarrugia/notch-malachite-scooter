@@ -1,2 +1,7 @@
-<a href="{{add step -1}}" id="previous-step" aria-hidden="" tabindex="-1" {{#unless step}}disappear{{/unless}}>Back</a>
-<a href="{{add step 1}}" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
+<a href="/{{add step -1}}" id="previous-step" aria-hidden="" tabindex="-1" {{#unless step}}disappear{{/unless}}>Back</a>
+{{#unless step}}
+  <a href="/1" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Start</a>
+{{/unless}}
+{{#if step}}
+  <a href="/{{add step 1}}" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
+{{/if}}
