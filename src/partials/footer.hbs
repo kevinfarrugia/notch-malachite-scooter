@@ -1,3 +1,2 @@
-<a href={{step-1}} id="previous-step" aria-hidden="" tabindex="-1" {{#unless step}}disappear{{/unless}}>Back</a>
-<a href="#" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
-<a href="/" id="done" {{#ifeq step maxStep}}show{{/ifeq}} data-title="Demo complete">Done</a>
+<a href="{{add step -1}}" id="previous-step" aria-hidden="" tabindex="-1" {{#unless step}}disappear{{/unless}}>Back</a>
+<a href="{{add step 1}}" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
