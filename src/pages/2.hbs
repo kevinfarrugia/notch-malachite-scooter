@@ -10,7 +10,36 @@
     </tr>
   </table>
   <p>
-    This demo utilizes an <code>ETag</code> to check the validity of the server response. The first time you visit the page, the browser does not have an ETag and therefore receives the full response from the server.
+    This demo utilizes an
+    <code>ETag</code>
+    to check the validity of the server response. The first time you visit the
+    page, the browser does not have an <code>ETag</code> and therefore receives the full
+    response from the server. Every subsequent request will include the received
+    ETag in the
+    <code>If-None-Match</code>
+    request header.
+  </p>
+  <p>
+    <img
+      width="456"
+      height="116"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
+      alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
+    />
+  </p>
+  <p>
+    If the <code>If-None-Match</code> header matches the ETag generated on the server, then the server will respond with a <code>304 - Not Modified</code> status code.
+  </p>
+  <p>
+    <img
+      width="456"
+      height="116"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
+      alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
+    />
+  </p>
+  <p>
+    The response size is also reduced from 38.5 KB to approximately 34 bytes.
   </p>
   <p>
     <img
