@@ -12,18 +12,15 @@
   <p>
     This demo utilizes an
     <code>ETag</code>
-    to check the validity of the server response. The first time you visit the
+    to check the validity of the server response. The first time you visit this
     page, the browser does not have an <code>ETag</code> and therefore receives the full
-    response from the server. Every subsequent request will include the received
-    ETag in the
-    <code>If-None-Match</code>
-    request header.
+    response from the server. Th
   </p>
   <p>
     <img
-      width="456"
-      height="116"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
+      width="927"
+      height="281"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-3.png?v=1667994127353"
       alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
     />
   </p>
@@ -32,28 +29,22 @@
   </p>
   <p>
     <img
-      width="456"
-      height="116"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
+      width="938"
+      height="454"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-2.png?v=1667994118703"
       alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
     />
   </p>
   <p>
-    The response size is also reduced from 38.5 KB to approximately 34 bytes.
+    The response size is also reduced from more than 30 KB to approximately 34 bytes - the response headers.
   </p>
   <p>
     <img
-      width="456"
-      height="116"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
-      alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
+      width="925"
+      height="43"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-1.png?v=1667993752843"
+      alt="Screenshot of Chrome DevTools showing 304 status code and reduced response size."
     />
-  </p>
-  <p>
-    <details>
-      <summary>View Source Code</summary>
-      <pre><code>reply.headers({ "cache-control": "no-store", });</code></pre>
-    </details>
   </p>
   <hr />
   {{{data}}}
