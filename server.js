@@ -6,6 +6,7 @@ const { getTime, generateRandomString } = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
+// total number of steps in this demo
 const MAX_STEP = 4;
 
 /** start: configure fastify **/
@@ -38,6 +39,8 @@ fastify.register(require("@fastify/view"), {
 });
 /** end: configure fastly **/
 
+const scripts = ``;
+
 /** start: routes **/
 
 // welcome route
@@ -58,6 +61,7 @@ fastify.get("/1", function (request, reply) {
     title: "no-store",
     data: generateRandomString(100, 200),    
     time: getTime(new Date()),
+    scripts
   };
 
   reply.headers({
@@ -74,6 +78,7 @@ fastify.get("/2", function (request, reply) {
     time: getTime(new Date()),
     title: "etag",
     data: generateRandomString(100, 200),
+    scripts,
   };
 
   const etag = md5(getTime(new Date()));
@@ -86,7 +91,7 @@ fastify.get("/2", function (request, reply) {
       "cache-control": "no-cache",
       etag,
     });
-    reply.view("/src/pages/demo.hbs", params);
+    reply.view("/src/pages/2.hbs", params);
   }
 
   return reply;
@@ -100,6 +105,7 @@ fastify.get("/3", function (request, reply) {
     time,
     title: "last-modified",
     data: generateRandomString(100, 200),
+    scripts,
   };
 
   if (time === request.headers["if-modified-since"]) {
@@ -110,7 +116,7 @@ fastify.get("/3", function (request, reply) {
       "cache-control": "no-cache",
       "last-modified": time,
     });
-    reply.view("/src/pages/demo.hbs", params);
+    reply.view("/src/pages/3.hbs", params);
   }
 
   return reply;
@@ -122,6 +128,7 @@ fastify.get("/4", function (request, reply) {
     time: getTime(new Date()),
     title: "max-age=30",
     data: generateRandomString(100, 200),
+    scripts,
   };
 
   const etag = md5(getTime(new Date()));
@@ -134,7 +141,7 @@ fastify.get("/4", function (request, reply) {
       "cache-control": "max-age=30",
       etag,
     });
-    reply.view("/src/pages/demo.hbs", params);
+    reply.view("/src/pages/4.hbs", params);
   }
 
   return reply;

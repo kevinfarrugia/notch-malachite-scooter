@@ -11,21 +11,20 @@
         {{> heading}}
       </div>
       <nav class="drawer">
-        {{> nav}}
+        {{> nav step=step}}
       </nav>
       <main>
         <div class="wrapper">
           <h2>
             {{title}}
           </h2>
-          <div>
-            {{{body}}}  
-          </div>
+          {{{body}}}  
         </div>
       </main>
       <footer>
-        {{> footer}}
+        {{> footer step=step}}
       </footer>
     </div>
+    {{{scripts}}}
   </body>
 </html>
