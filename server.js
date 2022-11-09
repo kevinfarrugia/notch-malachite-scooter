@@ -108,7 +108,7 @@ fastify.get("/3", function (request, reply) {
     scripts,
   };
 
-  if (time === request.headers["if-modified-since"]) {
+  if (time <= request.headers["if-modified-since"]) {
     reply.statusCode = 304;
     reply.send();
   } else {
