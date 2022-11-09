@@ -11,7 +11,7 @@
         {{> heading}}
       </div>
       <nav class="drawer">
-        {{> nav step=1 }}
+        {{> nav step=step }}
       </nav>
       <main>
         <div class="wrapper">
@@ -46,7 +46,7 @@
         </div>
       </main>
       <footer>
-        {{> footer}}
+        {{> footer step=step}}
       </footer>
     </div>
     <script>

@@ -16,7 +16,7 @@ fastify.register(require("@fastify/static"), {
   prefix: "/",
 });
 
-Handlebars.registerHelper(require("./src/helpers.js"));
+Handlebars.registerHelper(require("./helpers.js"));
 
 fastify.register(require("@fastify/view"), {
   engine: {
@@ -48,11 +48,10 @@ fastify.get("/", function (request, reply) {
 /** start: demo routes **/
 fastify.get("/1", function (request, reply) {
   let params = {
-    time: getTime(new Date()),
+    step: 1,
     title: "no-store",
-    data: generateRandomString(100, 200),
-    isWelcome: true,
-    step: 1
+    data: generateRandomString(100, 200),    
+    time: getTime(new Date()),
   };
 
   reply.headers({
@@ -63,74 +62,77 @@ fastify.get("/1", function (request, reply) {
   return reply;
 });
 
-// fastify.get("/2", function (request, reply) {
-//   let params = {
-//     time: getTime(new Date()),
-//     title: "etag",
-//     data: generateRandomString(),
-//   };
+fastify.get("/2", function (request, reply) {
+  let params = {
+    step: 2,
+    time: getTime(new Date()),
+    title: "etag",
+    data: generateRandomString(100, 200),
+  };
 
-//   const etag = md5(getTime(new Date()));
+  const etag = md5(getTime(new Date()));
 
-//   if (etag === request.headers["if-none-match"]) {
-//     reply.statusCode = 304;
-//     reply.send();
-//   } else {
-//     reply.headers({
-//       "cache-control": "no-cache",
-//       etag,
-//     });
-//     reply.view("/src/pages/demo.hbs", params);
-//   }
+  if (etag === request.headers["if-none-match"]) {
+    reply.statusCode = 304;
+    reply.send();
+  } else {
+    reply.headers({
+      "cache-control": "no-cache",
+      etag,
+    });
+    reply.view("/src/pages/demo.hbs", params);
+  }
 
-//   return reply;
-// });
+  return reply;
+});
 
-// fastify.get("/3", function (request, reply) {
-//   const time = getTime(new Date());
+fastify.get("/3", function (request, reply) {
+  const time = getTime(new Date());
 
-//   let params = {
-//     time,
-//     title: "last-modified",
-//     data: generateRandomString(),
-//   };
+  let params = {
+    step: 3,
+    time,
+    title: "last-modified",
+    data: generateRandomString(100, 200),
+  };
 
-//   if (time === request.headers["if-modified-since"]) {
-//     reply.statusCode = 304;
-//     reply.send();
-//   } else {
-//     reply.headers({
-//       "cache-control": "no-cache",
-//       "last-modified": time,
-//     });
-//     reply.view("/src/pages/demo.hbs", params);
-//   }
+  if (time === request.headers["if-modified-since"]) {
+    reply.statusCode = 304;
+    reply.send();
+  } else {
+    reply.headers({
+      "cache-control": "no-cache",
+      "last-modified": time,
+    });
+    reply.view("/src/pages/demo.hbs", params);
+  }
 
-//   return reply;
-// });
+  return reply;
+});
 
-// fastify.get("/4", function (request, reply) {
-//   let params = {
-//     time: getTime(new Date()),
-//     title: "max-age=30",
-//     data: generateRandomString(),
-//   };
+fastify.get("/4", function (request, reply) {
+  let params = {
+    step: 4,
+    time: getTime(new Date()),
+    title: "max-age=30",
+    data: generateRandomString(100, 200),
+  };
 
-//   const etag = md5(getTime(new Date()));
+  const etag = md5(getTime(new Date()));
 
-//   if (etag === request.headers["if-none-match"]) {
-//     reply.statusCode = 304;
-//     reply.send();
-//   } else {
-//     reply.headers({
-//       "cache-control": "max-age=30",
-//       etag,
-//     });
-//     reply.view("/src/pages/demo.hbs", params);
-//   }
+  if (etag === request.headers["if-none-match"]) {
+    reply.statusCode = 304;
+    reply.send();
+  } else {
+    reply.headers({
+      "cache-control": "max-age=30",
+      etag,
+    });
+    reply.view("/src/pages/demo.hbs", params);
+  }
 
-//   return reply;
-// });
+  return reply;
+});
 /** end: demo routes **/
 
 /** end: routes **/

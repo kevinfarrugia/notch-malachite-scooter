@@ -1,7 +1,7 @@
 <ol>
   <li {{#unless step}}selected{{/unless}}><a href="/"><span class="step">Welcome</span></a></li>
   <li {{#ifeq step 1}}selected{{/ifeq}}><a href="/1"><span class="step">no-store</span></a></li>
-  <li {{#if step}}selected{{/if}}><a href="/2"><span class="step">etag</span></a></li>
-  <li {{#if step}}selected{{/if}}><a href="/3"><span class="step">last-modified</span></a></li>
-  <li {{#if step}}selected{{/if}}><a href="/4"><span class="step">max-age</span></a></li>
+  <li {{#ifeq step 2}}selected{{/ifeq}}><a href="/2"><span class="step">etag</span></a></li>
+  <li {{#ifeq step 3}}selected{{/ifeq}}><a href="/3"><span class="step">last-modified</span></a></li>
+  <li {{#ifeq step 4}}selected{{/ifeq}}><a href="/4"><span class="step">max-age</span></a></li>
 </ol>
