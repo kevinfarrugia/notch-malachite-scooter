@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td>
-        Age:
+        Data:
       </td>
       <td>
         <strong>{{time}}</strong>
@@ -10,8 +10,18 @@
     </tr>
   </table>
   <p>
-    The timestamp above shows the freshness of the server's response. If you refresh the page, you will see that this value is updated with the current server time.
+    The timestamp above shows the freshness of the server's response. If you
+    refresh the page, this value will be updated with the current server time.
+    The
+    <i>"Lorem ipsum"</i>
+    dummy text below is used to inflate the server's response size.
   </p>
-  <br />
+  <p>
+    This demo returns a <code>cache-control: no-store</code> response header. This instructs the browser to not cache the response.
+  </p>
+  <p>
+    <img src="/public/learn-performance-caching-1.png" alt="Screenshot of Chrome DevTools showing network response." />
+  </p>
+  <hr />
   {{{data}}}
 </div>

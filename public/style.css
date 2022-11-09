@@ -24,7 +24,24 @@ video {
 }
 
 pre {
-  font-family: monospace;
+  background-color: #333333;
+  border-radius: 4px;
+  color: #f8f8f2;
+  font-size: 0.875em;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 0.625em;
+  text-align: left;
+  white-space: break-spaces;
+  word-break: break-all;
+}
+
+summary {
+  font-weight: 700;
+}
+
+hr {
+  margin: 8rem 0 1rem;
 }
 
 .content {

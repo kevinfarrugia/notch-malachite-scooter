@@ -2,24 +2,27 @@
   <table>
     <tr>
       <td>
-        Server:
+        Age:
       </td>
       <td>
         <strong>{{time}}</strong>
       </td>
     </tr>
-    <tr>
-      <td>
-        Client:
-      </td>
-      <td>
-        <strong id="time">&nbsp;</strong>
-      </td>
-    </tr>
   </table>
   <p>
-    Hi
+    The timestamp above shows the freshness of the server's response. If you
+    refresh the page, this value will be updated with the current server time.
+    The
+    <i>"Lorem ipsum"</i>
+    dummy text below is used to inflate the server's response size.
   </p>
-  <br />
+  <p>
+    If you inspect the response headers, you will see
+  </p>
+  <details>
+    <summary>View Source Code</summary>
+    <pre><code>cache-control: no-store</code></pre>
+  </details>
+  <hr />
   {{{data}}}
 </div>
