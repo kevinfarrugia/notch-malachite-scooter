@@ -6,6 +6,8 @@ const { getTime, generateRandomString } = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
+const MAX_STEP = 4;
+
 /** start: configure fastify **/
 const fastify = require("fastify")({
   logger: false,
@@ -22,6 +24,7 @@ fastify.register(require("@fastify/view"), {
   engine: {
     handlebars: Handlebars,
   },
+  layout: "/src/partials/layout.hbs",
   options: {
     partials: {
       nav: "/src/partials/nav.hbs",
@@ -30,7 +33,7 @@ fastify.register(require("@fastify/view"), {
     },        
   },
   defaultContext: {
-    maxStep: 4
+    maxStep: MAX_STEP
   }
 });
 /** end: configure fastly **/
@@ -60,7 +63,7 @@ fastify.get("/1", function (request, reply) {
   reply.headers({
     "cache-control": "no-store",
   });
-  reply.view("/src/pages/demo.hbs", params);
+  reply.view("/src/pages/1.hbs", params);
 
   return reply;
 });
