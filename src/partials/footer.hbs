@@ -1,3 +1,3 @@
-<a href="#" id="previous-step" aria-hidden="" tabindex="-1" {{#ifeq step 0}}dissapear{{/ifeq}} {{#ifeq step 1}}dissapear{{/ifeq}}>Back</a>
-<a href="#" id="next-step" {{#ifeq step 4}}dissapear{{/ifeq}}>Next</a>
-<a href="/" id="done" {{#ifeq step 4}}show{{/ifeq}} data-title="Demo complete">Done</a>
+<a href="#" id="previous-step" aria-hidden="" tabindex="-1" {{#unless step}}disappear{{/unless}}>Back</a>
+<a href="#" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
+<a href="/" id="done" {{#ifeq step maxStep}}show{{/ifeq}} data-title="Demo complete">Done</a>

@@ -27,8 +27,11 @@ fastify.register(require("@fastify/view"), {
       nav: "/src/partials/nav.hbs",
       footer: "/src/partials/footer.hbs",
       heading: "/src/partials/heading.hbs",
-    },    
+    },        
   },
+  defaultContext: {
+    maxStep: 4
+  }
 });
 /** end: configure fastly **/
 
