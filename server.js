@@ -1,11 +1,12 @@
 const { createHash } = require("crypto");
 const path = require("path");
+const Handlebars = require("handlebars");
 
 const { getTime, generateRandomString } = require("./utils");
 
 const md5 = (input) => createHash("md5").update(input).digest("hex");
 
-/** start: configure fastly **/
+/** start: configure fastify **/
 const fastify = require("fastify")({
   logger: false,
 });
@@ -15,17 +16,18 @@ fastify.register(require("@fastify/static"), {
   prefix: "/",
 });
 
+Handlebars.registerHelper(require("./src/helpers.js"));
+
 fastify.register(require("@fastify/view"), {
   engine: {
-    handlebars: require("handlebars"),
+    handlebars: Handlebars,
   },
   options: {
     partials: {
       nav: "/src/partials/nav.hbs",
       footer: "/src/partials/footer.hbs",
       heading: "/src/partials/heading.hbs",
-    },
-    helpers: require("./src/helpers.js"),
+    },    
   },
 });
 /** end: configure fastly **/
@@ -50,6 +52,7 @@ fastify.get("/1", function (request, reply) {
     title: "no-store",
     data: generateRandomString(100, 200),
     isWelcome: true,
+    step: 1
   };
 
   reply.headers({
