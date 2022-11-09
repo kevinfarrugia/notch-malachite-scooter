@@ -10,7 +10,11 @@
     </tr>
   </table>
   <p>
-    The <code>max-age=N</code> directive instructs the browser that it can cache a resource for <code>N</code> seconds and reuse it for subsequent requests without requiring revalidation.
+    The
+    <code>max-age=N</code>
+    directive instructs the browser that it can cache a resource for
+    <code>N</code>
+    seconds and reuse it for subsequent requests without requiring revalidation.
   </p>
   <p>
     <img
@@ -21,26 +25,55 @@
     />
   </p>
   <p>
-    Since the resource does not require revalidation, the browser does not do any network requests but fetches the resource directly from the disk cache.
+    Since the resource does not require revalidation, the browser does not do
+    any network requests but fetches the resource directly from the disk cache.
+    This is notably faster than
+    <code>ETag</code>
+    or
+    <code>Last-Modified</code>
+    and is not dependent on network conditions.
   </p>
   <p>
-    <i>Note that when refreshing the page, the browser sends a <code>max-age=0</code> request header to force revalidation. To see the <code>max-age=N</code> in action on this demo, press the </i>
+    <i>Note that when refreshing the page, the browser sends a
+      <code>max-age=0</code>
+      request header to force revalidation. To see the
+      <code>max-age=N</code>
+      in action on this demo, press the Back button and then the Next button to
+      return to this page. If the
+      <code>N</code>
+      seconds have not elapsed, you should receive a
+      <code>200 (from disk cache)
+      </code>
+      status.</i>
+  </p>
+  <p>
+    <img
+      width="927"
+      height="281"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-4-3.png?v=1668006491186"
+      alt="Screenshot of Chrome DevTools showing 200 (from disk cache) status code."
+    />
+  </p>
+  <p>
+    After the
+    <code>N</code>
+    seconds have elapsed, the browser will make a network request - including
+    the
+    <code>If-None-Match</code>
+    or
+    <code>If-Modified-Since</code>
+    request headers if available. This allows you to combine
+    <code>max-age=N</code>
+    with
+    <code>ETags</code>
+    or
+    <code>Last-Modified</code>
+    to find the best balance between performance and freshness.
   </p>
   <p>
     <details>
       <summary>View Source Code</summary>
-      <pre><code>if (time &lt;= request.headers["if-modified-since"]) {
-  reply.statusCode = 304;
-  reply.send();
-} else {
-  reply.headers({
-    "cache-control": "no-cache",
-    "last-modified": time,
-  });
-  reply.view("/src/pages/3.hbs", params);
-}
-
-return reply;</code></pre>
+      <pre><code></code></pre>
     </details>
   </p>
   <hr />

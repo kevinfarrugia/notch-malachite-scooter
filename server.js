@@ -126,7 +126,7 @@ fastify.get("/4", function (request, reply) {
   let params = {
     step: 4,
     time: getTime(new Date()),
-    title: "max-age=30",
+    title: "max-age=N",
     data: generateRandomString(100, 200),
     scripts,
   };
