@@ -12,15 +12,31 @@
   <p>
     The timestamp above shows the freshness of the server's response. If you
     refresh the page, this value will be updated with the current server time.
-    The
-    <i>"Lorem ipsum"</i>
-    dummy text below is used to inflate the server's response size.
+    Throughout this demo, it will be used to demonstrate whether the response is
+    stale or fresh. On your website, this is likely to be data from a CMS or API.
   </p>
   <p>
-    This demo returns a <code>cache-control: no-store</code> response header. This instructs the browser to not cache the response.
+    <i>Note: The "Lorem ipsum" dummy text below is used to inflate the server's
+      response size.</i>
   </p>
   <p>
-    <img src="/public/learn-performance-caching-1.png" alt="Screenshot of Chrome DevTools showing network response." />
+    This demo returns a
+    <code>cache-control: no-store</code>
+    response header. This instructs the browser to not cache the response.
+  </p>
+  <p>
+    <img
+      width="456"
+      height="116"
+      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-1-1.png?v=1667990957715"
+      alt="Screenshot of Chrome DevTools showing response headers, including 'cache-control: no-store'."
+    />
+  </p>
+  <p>
+    <details>
+      <summary>View Source Code</summary>
+      <pre><code>reply.headers({ "cache-control": "no-store", });</code></pre>
+    </details>
   </p>
   <hr />
   {{{data}}}
