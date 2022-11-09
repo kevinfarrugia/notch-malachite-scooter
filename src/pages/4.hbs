@@ -71,9 +71,27 @@
     to find the best balance between performance and freshness.
   </p>
   <p>
+    In this demo, since the data changes every 60 seconds, using a
+    <code>max-age=30</code>
+    means that the user could receive stale data for a maximum of 30 seconds.
+  </p>
+  <p>
     <details>
       <summary>View Source Code</summary>
-      <pre><code></code></pre>
+      <pre><code>const etag = md5(getTime(new Date()));
+
+if (etag === request.headers["if-none-match"]) {
+  reply.statusCode = 304;
+  reply.send();
+} else {
+  reply.headers({
+    "cache-control": "max-age=30",
+    etag,
+  });
+  reply.view("/src/pages/4.hbs", params);
+}
+
+return reply;</code></pre>
     </details>
   </p>
   <hr />
