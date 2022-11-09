@@ -25,6 +25,7 @@ fastify.register(require("@fastify/view"), {
       footer: "/src/partials/footer.hbs",
       heading: "/src/partials/heading.hbs",
     },
+    helpers: require("./src/helpers.js"),
   },
 });
 /** end: configure fastly **/
