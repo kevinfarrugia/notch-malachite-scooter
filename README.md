@@ -1,3 +1,3 @@
-# /learn/performance - Template
+# /learn/performance
 
 // TODO
