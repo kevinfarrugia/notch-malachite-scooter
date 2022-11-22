@@ -113,7 +113,7 @@ nav ol li[selected] a {
 }
 
 nav ol li[completed] a,
-nav ol li[selected] a{
+nav ol li[selected] a {
   font-weight: 600;
 }
 
@@ -202,7 +202,7 @@ footer #next-step {
   .drawer {
     display: flex;
   }
-  
+
   .content {
     display: grid;
     grid-template: 4rem 1fr 4rem/16rem 1fr;

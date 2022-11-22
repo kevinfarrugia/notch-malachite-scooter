@@ -1,92 +1,33 @@
 <div>
-  <table>
-    <tr>
-      <td>
-        Data:
-      </td>
-      <td>
-        <strong>{{time}}</strong>
-      </td>
-    </tr>
-  </table>
   <p>
-    This demo utilizes an
-    <code>ETag</code>
-    to check the freshness of the server response. The first time you visit this
-    page, the browser does not have an
-    <code>ETag</code>
-    and therefore receives the full response from the server. The response
-    includes the
-    <code>etag</code>
-    header and a value that is unique for this response. In our example, the
-    <code>ETag</code>
-    changes every 60 seconds - whenever the server time is updated.
+    A flash of unstyled content (FOUC) is when you see a brief flicker of a page
+    without any styles applied to it. Refresh this page in case you missed it.
   </p>
   <p>
-    <i>Note that we also include the
-      <code>cache-control: no-cache</code>
-      response header. This instructs the browser that it may store the response in the cache, but it must check the validity of the
-      cached data with the origin server before reuse.</i>
+    CSS is render-blocking by design. Placing any stylesheet CSS in the
+    <code>&lt;head&gt;</code>
+    will block the HTML parser until the stylesheet is downloaded and parsed. In
+    this demo, the stylesheet is placed before the closing
+    <code>&lt;body&gt;</code>
+    tag. This means the browser discovers the CSS file after parsing the HTML,
+    resulting in a FOUC.
   </p>
   <p>
     <img
-      width="927"
-      height="281"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-3.png?v=1668007823453"
-      alt="Screenshot of Chrome DevTools showing response headers, including 'etag: 3ec343...'."
+      src="https://cdn.glitch.global/a78c1e1e-8e60-4115-96d8-efb06507f66f/fouc.png?v=1668081026820"
+      alt="WebPageTest waterfall chart showing three resources. The Start Render mark appears between 0.8 and 1.0 seconds while style.css is being downloaded."
     />
   </p>
-  <p>
-    The browser will store the received
-    <code>ETag</code>
-    and every subsequent request will include the received it in the
-    <code>If-None-Match</code>
-    request header. If the
-    <code>If-None-Match</code>
-    header sent by the browser matches the ETag value generated on the server,
-    then the server will respond with a
-    <code>304</code>
-    status code.
-  </p>
-  <p>
-    <img
-      width="938"
-      height="464"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-2.png?v=1668007824274"
-      alt="Screenshot of Chrome DevTools showing request headers, including 'if-none-match: 3ec343...'."
-    />
-  </p>
-  <p>
-    The response size is also reduced from more than 30 KB to approximately 34
-    bytes - the response headers.
-  </p>
-  <p>
-    <img
-      width="925"
-      height="43"
-      src="https://cdn.glitch.global/1d17d497-a0db-4183-b4e9-1a5f350327b1/learn-performance-caching-2-1.png?v=1668007822519"
-      alt="Screenshot of Chrome DevTools showing 304 status code and reduced response size."
-    />
-  </p>
+  {{! prettier-ignore }}
   <p>
     <details>
-      <summary>View Source Code</summary>
-      <pre><code>const etag = md5(getTime(new Date()));
-
-if (etag === request.headers["if-none-match"]) {
-  reply.statusCode = 304;
-  reply.send();
-} else {
-  reply.headers({
-    "cache-control": "no-cache",
-    etag,
-  });
-  reply.view("/src/pages/2.hbs", params);
-}
-
-return reply;</code></pre>
+      <summary>View Source Code</summary>      
+      <pre><code>&lt;body&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;!-- content --&gt;
+  &lt;/div&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; /&gt;
+&lt;/body&gt;</code></pre>
     </details>
   </p>
-  <hr />
-  {{{data}}}
 </div>

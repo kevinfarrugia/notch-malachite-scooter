@@ -3,5 +3,5 @@
   <a href="/1" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Start</a>
 {{/unless}}
 {{#if step}}
-  <a href="/{{add step 1}}" id="next-step" {{#ifeq step 4}}disappear{{/ifeq}}>Next</a>
+  <a href="/{{add step 1}}" id="next-step" {{#ifeq step maxStep}}disappear{{/ifeq}}>Next</a>
 {{/if}}
