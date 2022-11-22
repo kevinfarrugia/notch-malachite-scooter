@@ -1,3 +1,8 @@
+const { promisify } = require("util");
+
+// creates an async delay for N milliseconds
+const delay = promisify(setTimeout);
+
 // generates a random length HTML string
 const generateRandomString = (min, max) => {
   const length = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,4 +21,4 @@ const getTime = (date) => {
   return new Date(Math.floor(date.getTime() / coeff) * coeff).toUTCString();
 };
 
-module.exports = { generateRandomString, getTime };
+module.exports = { generateRandomString, getTime, delay };

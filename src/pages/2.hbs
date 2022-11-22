@@ -7,10 +7,9 @@
     CSS is render-blocking by design. Placing any stylesheet CSS in the
     <code>&lt;head&gt;</code>
     will block the HTML parser until the stylesheet is downloaded and parsed. In
-    this demo, the stylesheet is placed before the closing
-    <code>&lt;body&gt;</code>
-    tag. This means the browser discovers the CSS file after parsing the HTML,
-    resulting in a FOUC.
+    this demo, the stylesheet is placed in the
+    <code>head</code>
+    as a render-blocking stylesheet. There is no FOUC.
   </p>
   <p>
     <img
@@ -18,16 +17,32 @@
       alt="WebPageTest waterfall chart showing three resources. The Start Render mark appears between 0.8 and 1.0 seconds while style.css is being downloaded."
     />
   </p>
+  <p>
+    The above image is taken from
+    <a
+      href="https://www.webpagetest.org/"
+      target="_blank"
+      rel="noreferrer noopener"
+    >WebPageTest</a>
+    and shows the resources loaded for this page. You should notice that the
+    Start Render mark - denoted by the dark green vertical line - appears
+    between 0.8 - 1.0s, at approximately the same time
+    <code>style.css</code>
+    is requested.
+  </p>
+  <p>
+    <i>Note that the requested resources include a
+      <code>delay</code>
+      query string parameter to exaggerate the server response times and make
+      the waterfall chart easier to follow.</i>
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
       <summary>View Source Code</summary>      
-      <pre><code>&lt;body&gt;
-  &lt;div class=&quot;content&quot;&gt;
-    &lt;!-- content --&gt;
-  &lt;/div&gt;
+      <pre><code>&lt;head&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; /&gt;
-&lt;/body&gt;</code></pre>
+&lt;/head&gt;</code></pre>
     </details>
   </p>
 </div>

@@ -18,6 +18,25 @@
       alt="WebPageTest waterfall chart showing three resources. The Start Render mark appears between 0.8 and 1.0 seconds while style.css is being downloaded."
     />
   </p>
+  <p>
+    The above image is taken from
+    <a
+      href="https://www.webpagetest.org/"
+      target="_blank"
+      rel="noreferrer noopener"
+    >WebPageTest</a>
+    and shows the resources loaded for this page. You should notice that the
+    Start Render mark - denoted by the dark green vertical line - appears
+    between 0.8 - 1.0s, at approximately the same time
+    <code>style.css</code>
+    is requested.
+  </p>
+  <p>
+    <i>Note that the requested resources include a
+      <code>delay</code>
+      query string parameter to exaggerate the server response times and make
+      the waterfall chart easier to follow.</i>
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
