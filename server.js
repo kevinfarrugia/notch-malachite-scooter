@@ -81,6 +81,39 @@ fastify.get("/2", function (request, reply) {
   return reply;
 });
 
+fastify.get("/3", function (request, reply) {
+  let params = {
+    step: 3,
+    title: "sizes",
+  };
+
+  reply.view("/src/pages/3.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/4", function (request, reply) {
+  let params = {
+    step: 4,
+    title: "srcset",
+  };
+
+  reply.view("/src/pages/4.hbs", params);
+
+  return reply;
+});
+
+
+fastify.get("/5", function (request, reply) {
+  let params = {
+    step: 5,
+    title: "srcset",
+  };
+
+  reply.view("/src/pages/5.hbs", params);
+
+  return reply;
+});
 /** end: routes **/
 
 // start the fastify server
