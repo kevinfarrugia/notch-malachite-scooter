@@ -1,20 +1,21 @@
 <div>
   <p>
-    This demo uses lossless compression (MozJPEG) to reduce the image sizes. Each
-    image was compressed manually and different settings were used on each one.
-    For the 1920w and 1280w images I used a quality of 50 and reduced the color
-    palette slightly. For the 640w image I kept the full 256 colors and used a
-    quality of 80.
+    This demo uses lossless compression (OxiPNG) to reduce the image size. The
+    image was compressed using a maximum effort of 3.
+  </p>
+  <p>
+    <i>To demonstrate lossless compression we are using an image which features
+      many sharp edges. Lossless compression does not perform well on
+      photographs which tend to have a high frequency, gradients and many
+      colors.</i>
   </p>
   <div class="gallery">
     <div class="large">
       <img
-        alt="Photograph of a group of pedestrians crossing the street."
-        width="640"
-        height="426"
-        src="/images/image-640-lossless.jpg"
-        srcset="/images/image-640-lossless.jpg 640w, /images/image-1280-lossless.jpg 1280w, /images/image-1920-lossless.jpg 1920w"
-        sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
+        alt="web.dev logo"
+        width="1200"
+        height="1200"
+        src="/images/image-1200-lossless.png"
       />
     </div>
   </div>
@@ -23,11 +24,10 @@
     <details>
       <summary>View Source Code</summary>      
       <pre><code>&lt;img
-  alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
-  width=&quot;640&quot;
-  height=&quot;426&quot;
-  src=&quot;/images/image-640-lossless.jpg&quot;
-  srcset=&quot;/images/image-640-lossless.jpg, /images/image-1280-lossless.jpg 2x, /images/image-1920-lossless.jpg 3x&quot;
+  alt=&quot;web.dev logo&quot;
+  width=&quot;1200&quot;
+  height=&quot;1200&quot;
+  src=&quot;/images/image-1200-lossless.png&quot;
 /&gt;</code></pre>
     </details>
   </p>
