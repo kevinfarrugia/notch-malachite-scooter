@@ -6,7 +6,7 @@ const Handlebars = require("handlebars");
 const { delay } = require("./utils");
 
 // total number of steps in this demo
-const MAX_STEP = 6;
+const MAX_STEP = 7;
 
 /** start: configure fastify **/
 const fastify = require("fastify")({
@@ -103,11 +103,32 @@ fastify.get("/4", function (request, reply) {
   return reply;
 });
 
-
 fastify.get("/5", function (request, reply) {
   let params = {
     step: 5,
     title: "Lossless compression",
+  };
+
+  reply.view("/src/pages/5.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/6", function (request, reply) {
+  let params = {
+    step: 6,
+    title: "The picture element",
+  };
+
+  reply.view("/src/pages/5.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/7", function (request, reply) {
+  let params = {
+    step: 7,
+    title: "Accept header",
   };
 
   reply.view("/src/pages/5.hbs", params);
