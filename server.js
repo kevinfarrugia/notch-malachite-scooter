@@ -95,7 +95,7 @@ fastify.get("/3", function (request, reply) {
 fastify.get("/4", function (request, reply) {
   let params = {
     step: 4,
-    title: "srcset",
+    title: "Lossy compression",
   };
 
   reply.view("/src/pages/4.hbs", params);
@@ -107,7 +107,7 @@ fastify.get("/4", function (request, reply) {
 fastify.get("/5", function (request, reply) {
   let params = {
     step: 5,
-    title: "srcset",
+    title: "Lossless compression",
   };
 
   reply.view("/src/pages/5.hbs", params);
