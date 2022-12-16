@@ -1,7 +1,6 @@
 const { createHash } = require("crypto");
 const path = require("path");
 const fs = require("fs");
-const httpProxy = require('http-proxy');
 const Handlebars = require("handlebars");
 
 const { delay } = require("./utils");
@@ -14,32 +13,18 @@ const fastify = require("fastify")({
   logger: false,
 });
 
-const imageProxy = httpProxy.createProxyServer();
+Handlebars.registerHelper(require("./helpers.js"));
 
-// replaced @fastify/static with a custom get handler which delays the response by N milliseconds
-fastify.get("/:image/(.+).:ext(jpe?g|png|webp|avif|gif|svg)", async function (request, reply) {
-  const content = fs.readFileSync(
-    `./public/${request.params["file"]}.${request.params["ext"]}`,
-    "utf-8"
-  );
-  
-  httpProxy
-
-  switch (request.params["ext"]) {
-    case "css":
-      reply.type("text/css");
-      break;
-    case "js":
-      reply.type("text/javascript");
-      break;
-    default:
-      reply.type("text/plain");
-  }
-
-  return content;
+// create a proxy to direct requests to /images to cdn.glitch.global
+fastify.register(require("@fastify/http-proxy"), {
+  upstream: "https://cdn.glitch.global/",
+  prefix: "/images",
 });
 
-Handlebars.registerHelper(require("./helpers.js"));
+fastify.register(require("@fastify/static"), {
+  root: path.join(__dirname, "public"),
+  prefix: "/public/",
+});
 
 fastify.register(require("@fastify/view"), {
   engine: {
@@ -51,11 +36,11 @@ fastify.register(require("@fastify/view"), {
       nav: "/src/partials/nav.hbs",
       footer: "/src/partials/footer.hbs",
       heading: "/src/partials/heading.hbs",
-    },        
+    },
   },
   defaultContext: {
-    maxStep: MAX_STEP
-  }
+    maxStep: MAX_STEP,
+  },
 });
 /** end: configure fastly **/
 
