@@ -1,6 +1,7 @@
 const { createHash } = require("crypto");
 const path = require("path");
 const fs = require("fs");
+const httpProxy = require('http-proxy');
 const Handlebars = require("handlebars");
 
 const { delay } = require("./utils");
@@ -13,13 +14,16 @@ const fastify = require("fastify")({
   logger: false,
 });
 
+const imageProxy = httpProxy.createProxyServer();
+
 // replaced @fastify/static with a custom get handler which delays the response by N milliseconds
-fastify.get("/:file(.+).:ext(css|js)", async function (request, reply) {
-  await delay(request.query["delay"] || 0);
+fastify.get("/:image/(.+).:ext(jpe?g|png|webp|avif|gif|svg)", async function (request, reply) {
   const content = fs.readFileSync(
     `./public/${request.params["file"]}.${request.params["ext"]}`,
     "utf-8"
   );
+  
+  httpProxy
 
   switch (request.params["ext"]) {
     case "css":
