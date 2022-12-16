@@ -23,7 +23,6 @@ fastify.register(require("@fastify/http-proxy"), {
 
 fastify.register(require("@fastify/static"), {
   root: path.join(__dirname, "public"),
-  prefix: "/public/",
 });
 
 fastify.register(require("@fastify/view"), {
@@ -52,7 +51,6 @@ const scripts = ``;
 fastify.get("/", function (request, reply) {
   let params = {
     title: "Welcome",
-    head: `<link rel="stylesheet" href="/style.css" />`,
   };
 
   reply.view("/src/pages/index.hbs", params);
@@ -64,9 +62,7 @@ fastify.get("/", function (request, reply) {
 fastify.get("/1", function (request, reply) {
   let params = {
     step: 1,
-    title: "FOUC",
-    scripts: `<script src="/script.js?delay=1000"></script>
-<link rel="stylesheet" href="/style.css?delay=1000" />`,
+    title: "<img>",
   };
 
   reply.view("/src/pages/1.hbs", params);
@@ -77,9 +73,7 @@ fastify.get("/1", function (request, reply) {
 fastify.get("/2", function (request, reply) {
   let params = {
     step: 2,
-    title: "No FOUC",
-    head: `<link rel="stylesheet" href="/style.css?delay=1000" />`,
-    scripts: `<script src="/script.js?delay=1000"></script>`,
+    title: "srcset",
   };
 
   reply.view("/src/pages/2.hbs", params);
