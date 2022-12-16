@@ -1,48 +1,27 @@
 <div>
   <p>
-    A flash of unstyled content (FOUC) is when you see a brief flicker of a page
-    without any styles applied to it. Refresh this page in case you missed it.
+    This demo uses <code>scrcset</code> to indicate a list of possible image sources the browser may use. Each image source uses a pixel density descriptor, with a total of three variants.
   </p>
-  <p>
-    CSS is render-blocking by design. Placing any stylesheet CSS in the
-    <code>&lt;head&gt;</code>
-    will block the HTML parser until the stylesheet is downloaded and parsed. In
-    this demo, the stylesheet is placed in the
-    <code>head</code>
-    as a render-blocking stylesheet. There is no FOUC.
-  </p>
-  <p>
-    <img
-      src="https://cdn.glitch.global/a78c1e1e-8e60-4115-96d8-efb06507f66f/fouc.png?v=1668081026820"
-      alt="WebPageTest waterfall chart showing three resources. The Start Render mark appears between 0.8 and 1.0 seconds while style.css is being downloaded."
-    />
-  </p>
-  <p>
-    The above image is taken from
-    <a
-      href="https://www.webpagetest.org/"
-      target="_blank"
-      rel="noreferrer noopener"
-    >WebPageTest</a>
-    and shows the resources loaded for this page. You should notice that the
-    Start Render mark - denoted by the dark green vertical line - appears
-    between 0.8 - 1.0s, at approximately the same time
-    <code>style.css</code>
-    is requested.
-  </p>
-  <p>
-    <i>Note that the requested resources include a
-      <code>delay</code>
-      query string parameter to exaggerate the server response times and make
-      the waterfall chart easier to follow.</i>
-  </p>
+  <div class="gallery">
+    <div class="large">
+      <img
+        alt="Photograph of a group of pedestrians crossing the street."
+        width="640"
+        height="426"
+        src="/images/5c7a461a-f9fa-4174-b79d-36b794063351/image-640-uncompressed.jpg?v=1671201930083"
+      />
+    </div>
+  </div>
   {{! prettier-ignore }}
   <p>
     <details>
       <summary>View Source Code</summary>      
-      <pre><code>&lt;head&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; /&gt;
-&lt;/head&gt;</code></pre>
+      <pre><code>&lt;img
+  alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
+  width=&quot;640&quot;
+  height=&quot;426&quot;
+  src=&quot;/images/5c7a461a-f9fa-4174-b79d-36b794063351/image-640-uncompressed.jpg?v=1671201930083&quot;
+/&gt;</code></pre>
     </details>
   </p>
 </div>

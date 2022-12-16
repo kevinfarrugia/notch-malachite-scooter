@@ -62,7 +62,7 @@ fastify.get("/", function (request, reply) {
 fastify.get("/1", function (request, reply) {
   let params = {
     step: 1,
-    title: "<img>",
+    title: "The <img> element",
   };
 
   reply.view("/src/pages/1.hbs", params);
