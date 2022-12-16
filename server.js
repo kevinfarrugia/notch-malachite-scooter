@@ -6,7 +6,7 @@ const Handlebars = require("handlebars");
 const { delay } = require("./utils");
 
 // total number of steps in this demo
-const MAX_STEP = 2;
+const MAX_STEP = 6;
 
 /** start: configure fastify **/
 const fastify = require("fastify")({
