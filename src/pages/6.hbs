@@ -1,21 +1,29 @@
 <div>
   <p>
-    This demo uses lossy compression (MozJPEG) to reduce the image sizes. Each
-    image was compressed manually and different settings were used on each one.
-    For the 1920w and 1280w images I used a quality of 50 and reduced the color
-    palette slightly. For the 640w image I kept the full 256 colors and used a
-    quality of 80.
+    This demo uses the
+    <code>&lt;picture&gt;</code>
+    element with a
+    <code>&lt;source&gt;</code>
+    for AVIF and WebP. The
+    <code>&lt;img&gt;</code>
+    element uses a JPEG as a fallback. This demo uses the same image resolution for
+    all devices as it does not use any
+    <code>srcset</code>
+    or
+    <code>sizes</code>.
   </p>
   <div class="gallery">
     <div class="large">
-      <img
-        alt="Photograph of a group of pedestrians crossing the street."
-        width="640"
-        height="426"
-        src="/images/image-640-lossy.jpg"
-        srcset="/images/image-640-lossy.jpg 640w, /images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w"
-        sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
-      />
+      <picture>
+        <source type="image/avif" srcset="/images/image-1280-lossy.avif" />
+        <source type="image/avif" srcset="/images/image-1280-lossy.webp" />
+        <img
+          alt="Photograph of a group of pedestrians crossing the street."
+          width="1280"
+          height="852"
+          src="/images/image-1280-lossy.jpg 1280w"
+        />
+      </picture>
     </div>
   </div>
   {{! prettier-ignore }}
