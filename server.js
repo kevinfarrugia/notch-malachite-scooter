@@ -142,21 +142,10 @@ fastify.get("/7", function (request, reply) {
 fastify.get("/8", function (request, reply) {
   let params = {
     step: 8,
-    title: "The picture element and DPR",
-  };
-
-  reply.view("/src/pages/8.hbs", params);
-
-  return reply;
-});
-
-fastify.get("/9", function (request, reply) {
-  let params = {
-    step: 9,
     title: "Accept header",
   };
 
-  reply.view("/src/pages/9.hbs", params);
+  reply.view("/src/pages/8.hbs", params);
 
   return reply;
 });

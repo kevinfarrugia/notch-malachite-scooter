@@ -15,13 +15,21 @@
   <div class="gallery">
     <div class="large">
       <picture>
-        <source type="image/avif" srcset="/images/image-1280-lossy.avif" />
-        <source type="image/webp" srcset="/images/image-1280-lossy.webp" />
+        <source
+          media="(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
+          srcset="/images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w"
+          sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
+        />
+        <source
+          media="(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
+          srcset="/images/image-1280-lossy-sm.jpg 1280w, /images/image-1920-lossy-sm.jpg 1920w"
+          sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
+        />
         <img
           alt="Photograph of a group of pedestrians crossing the street."
-          width="1280"
-          height="852"
-          src="/images/image-1280-lossy.jpg"
+          width="640"
+          height="426"
+          src="/images/image-640-lossy.jpg"
         />
       </picture>
     </div>
