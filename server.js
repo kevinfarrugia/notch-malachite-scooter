@@ -59,20 +59,20 @@ fastify.get("/", function (request, reply) {
 fastify.get("/images-accept/*", function (request, reply) {
   const { url } = request;
   const filename = path.parse(url).name;
-  console.log(request.headers.accept);
 
   if (request.headers.accept) {
     if (request.headers.accept.includes("image/avif")) {
-      console.log(`/images/${filename}.avif`);
-      return reply.redirect(`/images/${filename}.avif`);
+      const stream = fs.createReadStream(`/images/${filename}.avif`, "utf8");
+      reply.header("Content-Type", "application/octet-stream");
+      reply.send(stream);
     } else if (request.headers.accept.includes("image/webp")) {
-      console.log(`/images/${filename}.webp`);
-      return reply.redirect(`/images/${filename}.avif`);
+      const stream = fs.createReadStream(`/images/${filename}.webp`, "utf8");
+      reply.header("Content-Type", "application/octet-stream");
+      reply.send(stream);
     }
   }
 
-  console.log(`/images/${filename}.jpg`);
-  return reply.redirect(`/images/${filename}.jpg`);
+  reply.send(`/images/${filename}.jpg`);
 });
 
 /** start: demo routes **/
