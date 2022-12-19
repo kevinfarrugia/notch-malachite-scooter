@@ -2,8 +2,6 @@ const { createHash } = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const Handlebars = require("handlebars");
-const req = require('request');    
-
 
 const { delay } = require("./utils");
 
@@ -21,7 +19,7 @@ Handlebars.registerHelper(require("./helpers.js"));
 fastify.register(require("@fastify/http-proxy"), {
   upstream: "https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351",
   prefix: "/images",
-  disableCache: true
+  disableCache: true,
 });
 
 fastify.register(require("@fastify/static"), {
@@ -46,6 +44,30 @@ fastify.register(require("@fastify/view"), {
 });
 /** end: configure fastly **/
 
+// redirect URLs according to Accept header
+fastify.register(require("@fastify/reply-from"));
+
+fastify.get("/images-accept/*", function (request, reply) {
+  const { url } = request;
+  const filename = path.parse(url).name;
+
+  if (request.headers.accept) {
+    if (request.headers.accept.includes("image/avif")) {
+      return reply.from(
+        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.avif`
+      );
+    } else if (request.headers.accept.includes("image/webp")) {
+      return reply.from(
+        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.webp`
+      );
+    }
+  }
+
+  return reply.from(
+    `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.jpg`
+  );
+});
+
 /** start: routes **/
 
 // welcome route
@@ -57,25 +79,6 @@ fastify.get("/", function (request, reply) {
   reply.view("/src/pages/index.hbs", params);
 
   return reply;
-});
-
-fastify.get("/images-accept/*", function (request, reply) {
-  const { url } = request;
-  const filename = path.parse(url).name;
-
-  if (request.headers.accept) {
-    if (request.headers.accept.includes("image/avif")) {
-      return req.get(`/images/${filename}.avif`, (error, response) => {
-        reply.send(response);
-      });
-    } else if (request.headers.accept.includes("image/webp")) {
-      // const stream = fs.createReadStream(`/images/${filename}.webp`, "utf8");
-      // reply.header("Content-Type", "application/octet-stream");
-      // reply.send(stream);
-    }
-  }
-
-  reply.send(`/images/${filename}.jpg`);
 });
 
 /** start: demo routes **/
