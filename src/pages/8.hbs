@@ -1,16 +1,19 @@
 <div>
   <p>
-    This demo uses the
-    <code>&lt;picture&gt;</code>
-    element with a
-    <code>&lt;source&gt;</code>
-    for AVIF and WebP.</p><p>The
-    <code>&lt;img&gt;</code>
-    element uses a JPEG as a fallback. This demo uses the same image resolution
-    for all devices as it does not use any
-    <code>srcset</code>
-    or
-    <code>sizes</code>.
+    This demo serves the same images as in the previous example, but instead of
+    defining the different file formats in the HTML, it serves the correct file
+    format based on the
+    <code>Accept</code>
+    request header. The Accept header is checked on the server which rewrites
+    the URL to include the correct file extension and then forwards the response
+    as part of the original request.
+  </p>
+  <p>
+    This makes it seamless to the user, while the HTML markup is much smaller and easier to write.
+  </p>
+  <p>
+    <i>If you observe the image request in your browser's DevTools, you may notice
+    that the file type is AVIF, WebP or JPEG even if the file URL always ends in <code>.jpg</code>.</i>
   </p>
   <div class="gallery">
     <div class="large">
@@ -38,16 +41,47 @@
   <p>
     <details>
       <summary>View Source Code</summary>      
-      <pre><code>&lt;picture&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.avif&quot; /&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.webp&quot; /&gt;
+      <pre><code>// index.html
+&lt;picture&gt;
+  &lt;source
+    media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    srcset=&quot;/images-accept/image-1280-lossy.jpg 1280w, /images-accept/image-1920-lossy.jpg 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    srcset=&quot;/images-accept/image-1280-lossy-sm.jpg 1280w, /images-accept/image-1920-lossy-sm.jpg 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
   &lt;img
     alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
-    width=&quot;1280&quot;
-    height=&quot;852&quot;
-    src=&quot;/images/image-1280-lossy.jpg 1280w&quot;
+    width=&quot;640&quot;
+    height=&quot;426&quot;
+    src=&quot;/images-accept/image-640-lossy.jpg&quot;
   /&gt;
-&lt;/picture&gt;</code></pre>
+&lt;/picture&gt;
+
+// server.js
+fastify.get(&quot;/images-accept/*&quot;, function (request, reply) {
+  const { url } = request;
+  const filename = path.parse(url).name;
+
+  if (request.headers.accept) {
+    if (request.headers.accept.includes(&quot;image/avif&quot;)) {
+      return reply.from(
+        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.avif`
+      );
+    } else if (request.headers.accept.includes(&quot;image/webp&quot;)) {
+      return reply.from(
+        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.webp`
+      );
+    }
+  }
+
+  return reply.from(
+    `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.jpg`
+  );
+});</code></pre>
     </details>
   </p>
 </div>
