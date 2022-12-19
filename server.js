@@ -19,9 +19,6 @@ Handlebars.registerHelper(require("./helpers.js"));
 fastify.register(require("@fastify/http-proxy"), {
   upstream: "https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351",
   prefix: "/images",
-  replyOptions: {
-    queryString: { random: Date.now() },
-  },
 });
 
 fastify.register(require("@fastify/static"), {
@@ -59,6 +56,25 @@ fastify.get("/", function (request, reply) {
   reply.view("/src/pages/index.hbs", params);
 
   return reply;
+});
+
+fastify.get("/images-accept/*", function (request, reply) {
+  const { url } = request;
+  const filename = path.parse(url).name;
+  console.log(request.headers.accept);
+
+  if (request.headers.accept) {
+    if (request.headers.accept.includes("image/avif")) {
+      console.log(`/images/${filename}.avif`);
+      return reply.redirect(`/images/${filename}.avif`);
+    } else if (request.headers.accept.includes("image/webp")) {
+      console.log(`/images/${filename}.webp`);
+      return reply.redirect(`/images/${filename}.avif`);
+    }
+  }
+
+  console.log(`/images/${filename}.jpg`);
+  return reply.redirect(`/images/${filename}.jpg`);
 });
 
 /** start: demo routes **/
