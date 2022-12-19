@@ -14,35 +14,45 @@
         <source
           media="(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
           type="image/avif"
-          srcset="/images/image-640-lossy.avif 640w, /images/image-1280-lossy.avif 1280w, /images/image-1920-lossy.avif 1920w"
+          srcset="/images/image-1280-lossy-w.avif 1280w, /images/image-1920-lossy-w.avif 1920w"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <source
           media="(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
           type="image/avif"
-          srcset="/images/image-640-lossy.avif 640w, /images/image-1280-lossy.avif 1280w, /images/image-1920-lossy.avif 1920w"
+          srcset="/images/image-1280-lossy.avif 1280w, /images/image-1920-lossy.avif 1920w"
+          sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
+        />
+        <source
+          type="image/avif"
+          srcset="/images/image-640-lossy.avif"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <source
           media="(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
           type="image/webp"
-          srcset="/images/image-640-lossy.webp 640w, /images/image-1280-lossy.webp 1280w, /images/image-1920-lossy.webp 1920w"
+          srcset="/images/image-1280-lossy-w.webp 1280w, /images/image-1920-lossy-w.webp 1920w"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <source
           media="(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
           type="image/webp"
-          srcset="/images/image-640-lossy.webp 640w, /images/image-1280-lossy.webp 1280w, /images/image-1920-lossy.webp 1920w"
+          srcset="/images/image-1280-lossy.webp 1280w, /images/image-1920-lossy.webp 1920w"
+          sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
+        />
+        <source
+          type="image/avif"
+          srcset="/images/image-640-lossy.avif 640w"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <source
           media="(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
-          srcset="/images/image-640-lossy.jpg 640w, /images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w"
+          srcset="/images/image-1280-lossy-w.jpg 1280w, /images/image-1920-lossy-w.jpg 1920w"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <source
           media="(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)"
-          srcset="/images/image-640-lossy.jpg 640w, /images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w"
+          srcset="/images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w"
           sizes="(min-width: 540px) 640px, calc(100vw - 2rem)"
         />
         <img
@@ -59,13 +69,55 @@
     <details>
       <summary>View Source Code</summary>      
       <pre><code>&lt;picture&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.avif&quot; /&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.webp&quot; /&gt;
+  &lt;source
+    media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    type=&quot;image/avif&quot;
+    srcset=&quot;/images/image-1280-lossy-w.avif 1280w, /images/image-1920-lossy-w.avif 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    type=&quot;image/avif&quot;
+    srcset=&quot;/images/image-1280-lossy.avif 1280w, /images/image-1920-lossy.avif 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    type=&quot;image/avif&quot;
+    srcset=&quot;/images/image-640-lossy.avif&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    type=&quot;image/webp&quot;
+    srcset=&quot;/images/image-1280-lossy-w.webp 1280w, /images/image-1920-lossy-w.webp 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    type=&quot;image/webp&quot;
+    srcset=&quot;/images/image-1280-lossy.webp 1280w, /images/image-1920-lossy.webp 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    type=&quot;image/avif&quot;
+    srcset=&quot;/images/image-640-lossy.avif 640w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    srcset=&quot;/images/image-1280-lossy-w.jpg 1280w, /images/image-1920-lossy-w.jpg 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
+  &lt;source
+    media=&quot;(max-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+    srcset=&quot;/images/image-1280-lossy.jpg 1280w, /images/image-1920-lossy.jpg 1920w&quot;
+    sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+  /&gt;
   &lt;img
     alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
-    width=&quot;1280&quot;
-    height=&quot;852&quot;
-    src=&quot;/images/image-1280-lossy.jpg 1280w&quot;
+    width=&quot;640&quot;
+    height=&quot;426&quot;
+    src=&quot;/images/image-640-lossy.jpg&quot;
   /&gt;
 &lt;/picture&gt;</code></pre>
     </details>
