@@ -4,10 +4,10 @@
     <code>&lt;picture&gt;</code>
     element with a
     <code>&lt;source&gt;</code>
-    for AVIF and WebP. The
+    for AVIF and WebP.</p><p>The
     <code>&lt;img&gt;</code>
-    element uses a JPEG as a fallback. This demo uses the same image resolution for
-    all devices as it does not use any
+    element uses a JPEG as a fallback. This demo uses the same image resolution
+    for all devices as it does not use any
     <code>srcset</code>
     or
     <code>sizes</code>.
@@ -16,12 +16,12 @@
     <div class="large">
       <picture>
         <source type="image/avif" srcset="/images/image-1280-lossy.avif" />
-        <source type="image/avif" srcset="/images/image-1280-lossy.webp" />
+        <source type="image/webp" srcset="/images/image-1280-lossy.webp" />
         <img
           alt="Photograph of a group of pedestrians crossing the street."
           width="1280"
           height="852"
-          src="/images/image-1280-lossy.jpg 1280w"
+          src="/images/image-1280-lossy.jpg"
         />
       </picture>
     </div>
@@ -30,13 +30,16 @@
   <p>
     <details>
       <summary>View Source Code</summary>      
-      <pre><code>&lt;img
-  alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
-  width=&quot;640&quot;
-  height=&quot;426&quot;
-  src=&quot;/images/image-640-lossy.jpg&quot;
-  srcset=&quot;/images/image-640-lossy.jpg, /images/image-1280-lossy.jpg 2x, /images/image-1920-lossy.jpg 3x&quot;
-/&gt;</code></pre>
+      <pre><code>&lt;picture&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.avif&quot; /&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.webp&quot; /&gt;
+  &lt;img
+    alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
+    width=&quot;1280&quot;
+    height=&quot;852&quot;
+    src=&quot;/images/image-1280-lossy.jpg 1280w&quot;
+  /&gt;
+&lt;/picture&gt;</code></pre>
     </details>
   </p>
 </div>
