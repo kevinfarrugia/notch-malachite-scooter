@@ -43,8 +43,6 @@ fastify.register(require("@fastify/view"), {
 });
 /** end: configure fastly **/
 
-const scripts = ``;
-
 /** start: routes **/
 
 // welcome route
