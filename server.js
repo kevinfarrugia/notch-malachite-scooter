@@ -2,6 +2,8 @@ const { createHash } = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const Handlebars = require("handlebars");
+const req = require('request');    
+
 
 const { delay } = require("./utils");
 
@@ -19,6 +21,7 @@ Handlebars.registerHelper(require("./helpers.js"));
 fastify.register(require("@fastify/http-proxy"), {
   upstream: "https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351",
   prefix: "/images",
+  disableCache: true
 });
 
 fastify.register(require("@fastify/static"), {
@@ -62,13 +65,13 @@ fastify.get("/images-accept/*", function (request, reply) {
 
   if (request.headers.accept) {
     if (request.headers.accept.includes("image/avif")) {
-      const stream = fs.createReadStream(`/images/${filename}.avif`, "utf8");
-      reply.header("Content-Type", "application/octet-stream");
-      reply.send(stream);
+      return req.get(`/images/${filename}.avif`, (error, response) => {
+        reply.send(response);
+      });
     } else if (request.headers.accept.includes("image/webp")) {
-      const stream = fs.createReadStream(`/images/${filename}.webp`, "utf8");
-      reply.header("Content-Type", "application/octet-stream");
-      reply.send(stream);
+      // const stream = fs.createReadStream(`/images/${filename}.webp`, "utf8");
+      // reply.header("Content-Type", "application/octet-stream");
+      // reply.send(stream);
     }
   }
 
