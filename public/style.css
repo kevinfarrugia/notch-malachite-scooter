@@ -26,15 +26,17 @@ video {
   margin-right: auto;
 }
 
-code {
+p > code {
+  border: 1px solid #cccccc;
   color: #000000;
-  padding: 0 0.25rem;
+  padding: 0.125rem 0.25rem;
   font-size: 0.875rem;
 }
 
 pre {
   background-color: #333333;
   border-radius: 4px;
+  color: #f8f8f2;
   font-size: 0.875em;
   line-height: 1.5;
   overflow: auto;
@@ -42,10 +44,6 @@ pre {
   text-align: left;
   white-space: break-spaces;
   word-break: break-all;
-}
-
-pre > code {
-  color: #f8f8f2;
 }
 
 summary {
