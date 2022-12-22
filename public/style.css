@@ -235,7 +235,7 @@ table {
   font-size: 0.875rem;
 }
 
-table tbody tr:nth-child(2n) {
+table tbody tr:nth-child(2n + 1) {
   background-color: #ffffff;
 }
 
