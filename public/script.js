@@ -36,16 +36,11 @@
     }
   }
 
-  document.getElementById("naturalWidth").innerHTML = "-";
-  document.getElementById("naturalHeight").innerHTML = "-";
-  document.getElementById("clientWidth").innerHTML = "-";
-  document.getElementById("clientHeight").innerHTML = "-";
-  document.getElementById("usedPercentage").innerHTML = "-";
-
   const dpr = window.devicePixelRatio;
   document.getElementById("dpr").innerHTML = `${dpr}`;
 
   const imageEl = document.getElementById("image");
+  getImageDetail(imageEl);
 
   // update on load
   imageEl.onload = () => getImageDetail(imageEl);
