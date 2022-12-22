@@ -231,6 +231,14 @@ footer #next-step {
   width: 100%;
 }
 
+table {
+  font-size: 0.875rem;
+}
+
+table tbody tr:nth-child(2n) {
+  background-color: #ffffff;
+}
+
 table tbody td {
   padding: 0.125rem 0.5rem;
 }
