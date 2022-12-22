@@ -73,7 +73,7 @@ fastify.get("/images-accept/*", function (request, reply) {
 // welcome route
 fastify.get("/", function (request, reply) {
   let params = {
-    title: "Welcome",
+    title: "Learn Performance - Images",
   };
 
   reply.view("/src/pages/index.hbs", params);
