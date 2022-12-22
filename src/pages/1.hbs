@@ -1,8 +1,8 @@
 <div>
   <p>
-    This demo includes an uncompressed image with an intrinsic width of . On a device
-    with a viewport larger than 540px, the image is displayed at a maximum of
-    640px. On devices with a smaller viewport, it is displayed at
+    This demo includes an uncompressed image with an intrinsic width of . On a
+    device with a viewport larger than 540px, the image is displayed at a
+    maximum of 640px. On devices with a smaller viewport, it is displayed at
     <code>calc(100vw - 2rem)</code>.
   </p>
   <div class="gallery">
@@ -15,6 +15,50 @@
         src="/images/image-640-uncompressed.jpg"
       />
     </div>
+  </div>
+  <div>
+    <p>
+      <strong>Image details:</strong>
+    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            Intrinsic Width
+          </td>
+          <td id="naturalWidth">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Intrinsic Height
+          </td>
+          <td id="naturalHeight">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Display Width
+          </td>
+          <td id="clientWidth">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Display Height
+          </td>
+          <td id="clientHeight">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Percentage Unusued
+          </td>
+          <td id="unusedPercentage">
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   {{! prettier-ignore }}
   <p>
