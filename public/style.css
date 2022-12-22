@@ -230,3 +230,11 @@ footer #next-step {
 .large img {
   width: 100%;
 }
+
+table tbody td {
+  padding: 0.125rem 0.5rem;
+}
+
+table tbody td:nth-child(2n) {
+  font-weight: 600;
+}
