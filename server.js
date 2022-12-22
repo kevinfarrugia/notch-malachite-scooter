@@ -86,6 +86,7 @@ fastify.get("/1", function (request, reply) {
   let params = {
     step: 1,
     title: "The <img> element",
+    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/1.hbs", params);
