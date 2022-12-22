@@ -1,9 +1,20 @@
 <div>
   <p>
-    This demo includes an uncompressed image with an intrinsic width of . On a
+    This demo includes an uncompressed image with an intrinsic width of 640px. On a
     device with a viewport larger than 540px, the image is displayed at a
     maximum of 640px. On devices with a smaller viewport, it is displayed at
     <code>calc(100vw - 2rem)</code>.
+  </p>
+  <p>
+    The demo also includes a script which is used to update the table beneath
+    the image. The
+    <i>Percentage Used</i>
+    is calculated as the
+    <code>(Display Width * Display Height) * DPR^2 / Intrinsic Width * Intrinsic
+      Height</code>.
+  </p>
+  <p>
+    If the percentage used is greater than 100%, then the i
   </p>
   <div class="gallery">
     <div class="large">
@@ -27,6 +38,13 @@
             File
           </td>
           <td id="currentSrc">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Size
+          </td>
+          <td id="decodedBodySize">
           </td>
         </tr>
         <tr>

@@ -15,8 +15,7 @@
     };
   }
 
-  function updateUI(image) {
-    console.log("j");
+  const updateUI = debounce(function (image) {
     const { clientWidth, clientHeight, currentSrc } = image;
 
     // we download the image but do not place it in the DOM to get the natural width/height
@@ -24,10 +23,13 @@
     const offscreenImage = new Image();
     offscreenImage.onload = () => {
       const { naturalWidth, naturalHeight } = offscreenImage;
+      
+      const decodedBodySize = Math.round(performance.getEntriesByName(currentSrc)[0].decodedBodySize / 1024);
 
       document.getElementById("currentSrc").innerHTML = `${currentSrc
         .split("/")
         .pop()}`;
+      document.getElementById("decodedBodySize").innerHTML = `${decodedBodySize} KB`;
       document.getElementById("naturalWidth").innerHTML = `${naturalWidth}px`;
       document.getElementById("naturalHeight").innerHTML = `${naturalHeight}px`;
       document.getElementById("clientWidth").innerHTML = `${clientWidth}px`;
@@ -43,7 +45,7 @@
       ).innerHTML = `${usedPercentage}%`;
     };
     offscreenImage.src = currentSrc;
-  }
+  }, 300);
 
   function getImageDetail(image) {
     document.getElementById("naturalWidth").innerHTML = "-";
@@ -52,7 +54,7 @@
     document.getElementById("clientHeight").innerHTML = "-";
     document.getElementById("usedPercentage").innerHTML = "-";
 
-    debounce(() => updateUI(image), 300);
+    updateUI(image);
   }
 
   const dpr = window.devicePixelRatio;
