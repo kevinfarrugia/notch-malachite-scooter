@@ -1,9 +1,26 @@
 <div>
   <p>
-    This demo uses
+    This demo uses the
     <code>scrcset</code>
-    to indicate a list of possible image sources the browser may use. Each image
-    source uses a pixel density descriptor, with a total of three variants.
+    attribute to indicate to the browser a list of possible image sources. The
+    <code>srcset</code>
+    value used in this demo has a pixel-density descriptor for each image:
+  </p>
+  {{! prettier-ignore }}
+  <code><pre>srcset=&quot;/image-640.jpg, /image-1280.jpg 2x, /image-1920.jpg 3x&quot;</pre></code>
+  <p>
+    We are recommending the browser to use
+    <code>/image-640.jpg</code>
+    on a 1x device,
+    <code>/image-1280.jpg</code>
+    on a 2x device and
+    <code>/image-1920.jpg</code>
+    on a 3x device and above.
+  </p>
+  <p>
+    If you look at the table beneath the image, you could see which image is
+    being used, together with its file size and resolution (intrinsic width and
+    height).
   </p>
   <div class="gallery">
     <div class="large">
