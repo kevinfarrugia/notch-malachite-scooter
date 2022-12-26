@@ -2,20 +2,36 @@
   <p>
     In this demo we extend the
     <code>&lt;picture&gt;</code>
-    element by combining <code>type</code> to serve modern image formats and
-    <code>media</code>, <code>srcset</code>
+    element by combining
+    <code>type</code>
+    to serve modern image formats and
+    <code>media</code>,
+    <code>srcset</code>
     , and
     <code>sizes</code>
     to recommend the best image resolution and quality.
   </p>
-  <pre><code>&lt;source
-  media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
-  type=&quot;image/avif&quot;
-  srcset=&quot;/images/image-1280-lossy.avif?v=7 1280w, /images/image-1920-lossy.avif?v=7 1920w&quot;
-  sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
-/&gt;</code></pre>
+  <pre><code>&lt;source media=&quot;(min-width: 560px) and
+      (-webkit-min-device-pixel-ratio: 1.5)&quot; type=&quot;image/avif&quot;
+      srcset=&quot;/images/image-1280-lossy.avif?v=7 1280w,
+      /images/image-1920-lossy.avif?v=7 1920w&quot; sizes=&quot;(min-width:
+      540px) 640px, calc(100vw - 2rem)&quot; /&gt;</code></pre>
   <p>
-    The <code>media</code> attribute is used to distinguish between small viewports and larger viewports.  The <code>media</code> attribute is not a hint and must be followed by the browser.
+    The
+    <code>media</code>
+    attribute is used to distinguish between small viewports and larger
+    viewports. We are also combining this with the
+    <code>-webkit-min-device-pixel-ratio</code>
+    to only use these images on devices with a DPR that is at least 1.5x. We are
+    using these rules to avoid serving large, high quality images on mobile
+    devices since the human eye is not able to recognize details at such a small
+    size. This gives us the possibilty to heavily compress images that will only
+    be used on small viewports.
+  </p>
+  <p>
+    Note that the
+    <code>media</code>
+    attribute is not a hint and must be followed by the browser.
   </p>
   <div class="gallery">
     <div class="large">
@@ -139,6 +155,13 @@
       </tbody>
     </table>
   </div>
+  <p>
+    If the file name ends with
+    <code>-sm</code>, such as
+    <code>image-1280-lossy-sm.avif?v=7</code>, then we are using a heavily
+    compressed image that is suitable for small viewports devices. Are you able
+    to distinguish this from the less compressed image?
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
