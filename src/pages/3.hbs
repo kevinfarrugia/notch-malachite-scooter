@@ -3,14 +3,26 @@
     This demo uses the
     <code>sizes</code>
     attribute combined with
-    <code>scrcset</code>
-    and width descriptors.
+    <code>scrcset</code>. The
+    <code>srcset</code>
+    attribute in this demo uses width descriptors:
   </p>
+  {{! prettier-ignore }}
+  <code><pre>srcset=&quot;/image-640.jpg 640w, /image-1280.jpg 1280w, /image-1920.jpg 1920w&quot;</pre></code>
   <p>
-    <i>Note that while the
-      <a href="/2">previous demo</a>
-      always used the 1920w image on devices with a 3.0 DPR, this demo picks the
-      1280w image on 3x devices with a small viewport.</i>
+    The width descriptor matches the image's intrinsic width. So the file
+    <code>/image-640.jpg</code>
+    has an intrinsic width of
+    <code>640w</code>. This is combined with the
+    <code>sizes</code>, where we inform the browser at what display size the
+    image will be displayed on different viewports.
+  </p>
+  {{! prettier-ignore }}
+  <code><pre>sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;</pre></code>
+  <p>
+    On devices with a viewport larger than 540px, the image will always be shown
+    at 640px, while on smaller viewports it will occupy the viewport width minus
+    2rem.
   </p>
   <div class="gallery">
     <div class="large">
@@ -90,6 +102,10 @@
       </tbody>
     </table>
   </div>
+  <p>
+    If you look at the table above, you can observe that the image
+    selected by the browser depends on the viewport width and not the device's DPR. If you compare this with the previous demo, which
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
