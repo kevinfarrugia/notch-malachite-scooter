@@ -1,16 +1,20 @@
 <div>
   <p>
-    This demo uses the
+    In this demo we are using the
     <code>&lt;picture&gt;</code>
-    element with a
+    element with a different
     <code>&lt;source&gt;</code>
-    for AVIF and WebP.</p><p>The
+    for AVIF and WebP. The
     <code>&lt;img&gt;</code>
-    element uses a JPEG as a fallback. This demo uses the same image resolution
-    for all devices as it does not use any
+    element uses a JPEG image as a fallback.
+  </p>
+  <p>
+    This demo uses the same image resolution for all devices as it does not use
+    any
     <code>srcset</code>
     or
-    <code>sizes</code>.
+    <code>sizes</code>
+    attributes.
   </p>
   <div class="gallery">
     <div class="large">
@@ -92,6 +96,17 @@
       </tbody>
     </table>
   </div>
+  <p>
+    When looking at the table above, which file type is the browser using? How
+    does this compare with the image's file size?
+  </p>
+  <p>
+    If you are using Google Chrome, you able to
+    <a
+      href="https://developer.chrome.com/blog/new-in-devtools-88/#emulate-image"
+    >Disable AVIF or WebP</a>
+    while testing to emulate unsupported types.
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>

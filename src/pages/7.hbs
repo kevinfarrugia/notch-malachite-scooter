@@ -1,12 +1,21 @@
 <div>
   <p>
-    This demo builds upon the previous demo by using the
+    In this demo we extend the
     <code>&lt;picture&gt;</code>
-    element to serve modern image formats and
-    <code>srcset</code>
-    and
+    element by combining <code>type</code> to serve modern image formats and
+    <code>media</code>, <code>srcset</code>
+    , and
     <code>sizes</code>
-    to indicate the correct image.
+    to recommend the best image resolution and quality.
+  </p>
+  <pre><code>&lt;source
+  media=&quot;(min-width: 560px) and (-webkit-min-device-pixel-ratio: 1.5)&quot;
+  type=&quot;image/avif&quot;
+  srcset=&quot;/images/image-1280-lossy.avif?v=7 1280w, /images/image-1920-lossy.avif?v=7 1920w&quot;
+  sizes=&quot;(min-width: 540px) 640px, calc(100vw - 2rem)&quot;
+/&gt;</code></pre>
+  <p>
+    The <code>media</code> attribute is used to distinguish between small viewports and larger viewports.  The <code>media</code> attribute is not a hint and must be followed by the browser.
   </p>
   <div class="gallery">
     <div class="large">
