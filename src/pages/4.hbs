@@ -1,10 +1,21 @@
 <div>
   <p>
-    This demo uses lossy compression (MozJPEG) to reduce the image sizes. Each
-    image was compressed manually and different settings were used on each one.
-    For the 1920w image I used a quality of 50 and reduced the color
-    palette slightly. For the 1280w and 640w image I kept the full 256 colors and used a
-    quality of 80.
+    This demo uses lossy compression (MozJPEG) to reduce the images' file size.
+    The
+    <code>&lt;img&gt;</code>
+    element uses the
+    <code>srcset</code>
+    and
+    <code>sizes</code>
+    attributes and each image was compressed manually with different settings
+    used for each.</p>
+  <p>I compressed the
+    <code>image-1920.jpg</code>
+    image with a quality of 50 and reduced the color palette slightly. The
+    <code>image-1280.jpg</code>
+    and
+    <code>image-640.jpg</code>
+    images were compressed with a quality of 80 without a reduced color palette.
   </p>
   <div class="gallery">
     <div class="large">
@@ -84,6 +95,14 @@
       </tbody>
     </table>
   </div>
+  <p>
+    Compare the image's file size with the previous demo while also observing
+    the image quality. For example, the
+    <code>/image-1280.jpg</code>
+    image was reduced from 1622 KB to 283 KB. That's more than 500% savings!
+    Are you able to see any compression artifacts? Does it still look good on
+    your current device?
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
