@@ -1,19 +1,15 @@
 <div>
   <p>
-    This demo serves the same images as in the previous example, but instead of
-    defining the different file formats in the HTML, it serves the correct file
-    format based on the
+    In this demo we are using the same
+    <code>&lt;picture&gt;</code>
+    element as in the previous example, but instead of defining the different
+    image formats in the HTML, the server is selecting the image based on the
     <code>Accept</code>
-    request header. The Accept header is checked on the server which rewrites
-    the URL to include the correct file extension and then forwards the response
-    as part of the original request.
+    request header.
   </p>
   <p>
-    This makes it seamless to the user, while the HTML markup is much smaller and easier to write.
-  </p>
-  <p>
-    <i>If you observe the image request in your browser's DevTools, you may notice
-    that the file type is AVIF, WebP or JPEG even if the file URL always ends in <code>.jpg</code>.</i>
+    This makes it seamless to the user, while making the HTML markup much
+    smaller and easier to write.
   </p>
   <div class="gallery">
     <div class="large">
@@ -103,6 +99,12 @@
       </tbody>
     </table>
   </div>
+  <p>
+    If you observe the image request in your browser's DevTools and compare it
+    with the file name in the above table, you should be able to see that the
+    image type is AVIF or WebP even if the file URL ends in
+    <code>.jpg</code>
+  </p>
   {{! prettier-ignore }}
   <p>
     <details>
