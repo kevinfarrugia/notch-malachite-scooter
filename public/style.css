@@ -11,7 +11,7 @@ html {
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: monospace;
   line-height: 1.5;
   background-color: #f8f9fa;
   color: #3c4043;
@@ -22,5 +22,5 @@ div {
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", monospace;
 }
