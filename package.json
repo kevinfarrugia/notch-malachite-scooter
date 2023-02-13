@@ -1,7 +1,7 @@
 {
-  "name": "learn-performance-fonts",
+  "name": "font-display",
   "version": "0.1.0",
-  "description": "Demo of font web performance.",
+  "description": "font-display: optional",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -16,9 +16,6 @@
   },
   "engines": {
     "node": "14.x"
-  },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/learn-performance-caching"
   },
   "license": "MIT",
   "keywords": [
