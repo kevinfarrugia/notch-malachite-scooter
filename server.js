@@ -20,6 +20,10 @@ fastify.register(require("@fastify/http-proxy"), {
   upstream: "https://cdn.glitch.global/b6592dee-457d-4490-b17e-3afa965ee9ee/",
   prefix: "/fonts",
   disableCache: true,
+  preHandler: async function (_req, _res, next) {
+    await delay(3000);
+    next();
+  }
 });
 
 fastify.register(require("@fastify/static"), {
@@ -62,7 +66,8 @@ fastify.get("/1", function (request, reply) {
   let params = {
     step: 1,
     title: "Web Font",
-    head: "<link rel='stylesheet' href='/open-sans.css'>"
+    head: `<link rel='stylesheet' href='/open-sans.css'>
+<link rel='stylesheet' href='/fancy.css'>`
   };
 
   reply.view("/src/pages/1.hbs", params);
