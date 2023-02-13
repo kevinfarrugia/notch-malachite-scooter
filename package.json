@@ -1,7 +1,7 @@
 {
-  "name": "learn-performance-caching",
+  "name": "learn-performance-fonts",
   "version": "0.1.0",
-  "description": "Demo of etag, last-modified, and cache-control headers.",
+  "description": "Demo of font web performance.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
