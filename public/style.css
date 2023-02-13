@@ -220,29 +220,3 @@ footer #next-step {
     grid-template-areas: "title title" "drawer main" "footer footer";
   }
 }
-
-.gallery {
-  width: 640px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.large img {
-  width: 100%;
-}
-
-table {
-  font-size: 0.875rem;
-}
-
-table tbody tr:nth-child(2n + 1) {
-  background-color: #ffffff;
-}
-
-table tbody td {
-  padding: 0.125rem 0.5rem;
-}
-
-table tbody td:nth-child(2n) {
-  font-weight: 600;
-}

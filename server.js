@@ -20,8 +20,10 @@ fastify.register(require("@fastify/http-proxy"), {
   upstream: "https://cdn.glitch.global/b6592dee-457d-4490-b17e-3afa965ee9ee/",
   prefix: "/fonts",
   disableCache: true,
+  
+  // add a 1 second delay
   preHandler: async function (_req, _res, next) {
-    await delay(3000);
+    await delay(1000);
     next();
   }
 });
@@ -78,7 +80,10 @@ fastify.get("/1", function (request, reply) {
 fastify.get("/2", function (request, reply) {
   let params = {
     step: 2,
-    title: "srcset",
+    title: "preload",
+    head: `<link rel="preload" as="font" href="/fonts/OpenSans-Regular.woff2?v=1676325285146" crossorigin>
+<link rel='stylesheet' href='/open-sans.css'>
+<link rel='stylesheet' href='/fancy.css'>`
   };
 
   reply.view("/src/pages/2.hbs", params);
@@ -89,7 +94,10 @@ fastify.get("/2", function (request, reply) {
 fastify.get("/3", function (request, reply) {
   let params = {
     step: 3,
-    title: "sizes",
+    title: "Unused preload",
+    head: `<link rel="preload" as="font" href="/fonts/OpenSans-Regular.woff2?v=1676325285146">
+<link rel='stylesheet' href='/open-sans.css'>
+<link rel='stylesheet' href='/fancy.css'>`
   };
 
   reply.view("/src/pages/3.hbs", params);
@@ -100,7 +108,18 @@ fastify.get("/3", function (request, reply) {
 fastify.get("/4", function (request, reply) {
   let params = {
     step: 4,
-    title: "Lossy compression",
+    title: "Inline @font-face",
+    head: `<style>
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular.woff2?v=1676325285146") format("woff2");
+}
+
+.fancy {
+  font-family: "Open Sans", sans-serif;
+}
+
+</style>`
   };
 
   reply.view("/src/pages/4.hbs", params);

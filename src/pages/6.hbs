@@ -1,126 +1,33 @@
 <div>
-  <p>
-    In this demo we are using the
-    <code>&lt;picture&gt;</code>
-    element with a different
-    <code>&lt;source&gt;</code>
-    for AVIF and WebP. The
-    <code>&lt;img&gt;</code>
-    element uses a JPEG image as a fallback.
-  </p>
-  <p>
-    This demo uses the same image resolution for all devices as it does not use
-    any
-    <code>srcset</code>
-    or
-    <code>sizes</code>
-    attributes.
-  </p>
-  <div class="gallery">
-    <div class="large">
-      <picture>
-        <source type="image/avif" srcset="/images/image-1280-lossy.avif?v=6" />
-        <source type="image/webp" srcset="/images/image-1280-lossy.webp?v=6" />
-        <img
-          id="image"
-          alt="Photograph of a group of pedestrians crossing the street."
-          width="1280"
-          height="852"
-          src="/images/image-1280-lossy.jpg?v=6"
-        />
-      </picture>
-    </div>
-  </div>
-  <div>
+  <div class="fancy">
     <p>
-      <strong>Image details:</strong>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac orci
+      dictum, dictum augue nec, semper sapien. Etiam efficitur a nisl sed
+      semper. Nam et venenatis risus, eget consequat odio. Praesent at purus
+      ligula. Pellentesque tincidunt lorem at augue mattis blandit. Cras at
+      ipsum augue. Duis vestibulum, ex eu commodo tristique, sem dui cursus
+      lorem, quis sollicitudin leo sem et dui. Integer nec pellentesque nisi.
+      Aliquam fringilla quam neque, eget volutpat nisi pharetra ac. Pellentesque
+      habitant morbi tristique senectus et netus et malesuada fames ac turpis
+      egestas.
     </p>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            File
-          </td>
-          <td id="currentSrc">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Size
-          </td>
-          <td id="decodedBodySize">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Intrinsic Width
-          </td>
-          <td id="naturalWidth">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Intrinsic Height
-          </td>
-          <td id="naturalHeight">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Display Width
-          </td>
-          <td id="clientWidth">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Display Height
-          </td>
-          <td id="clientHeight">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            DPR
-          </td>
-          <td id="dpr">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Percentage Used
-          </td>
-          <td id="usedPercentage">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <p>
+      Praesent blandit eu ex nec volutpat. Cras vitae ex dui. Nunc venenatis
+      erat in lacus gravida vehicula. Nulla bibendum sit amet dui vitae
+      scelerisque. Cras in est erat. Nunc convallis libero sed ipsum blandit, eu
+      consectetur neque finibus. Donec sit amet pretium nibh. Aliquam non elit
+      ipsum. Aenean dignissim nec dui sit amet sollicitudin. Donec consequat
+      nisl metus, quis maximus velit venenatis a. Phasellus mi libero, euismod
+      sed turpis vel, finibus cursus lectus. Vivamus accumsan rhoncus elementum.
+      Sed pretium felis nec purus dapibus, viverra luctus erat pharetra. Donec
+      eu rhoncus velit, eget dictum odio. Fusce in lacinia lacus.
+    </p>
   </div>
-  <p>
-    When looking at the table above, which file type is the browser using? How
-    does this compare with the image's file size?
-  </p>
-  <p>
-    If you are using Google Chrome, you able to
-    <a
-      href="https://developer.chrome.com/blog/new-in-devtools-88/#emulate-image"
-    >Disable AVIF or WebP</a>
-    while testing to emulate unsupported types.
-  </p>
   {{! prettier-ignore }}
   <p>
     <details>
       <summary>View Source Code</summary>      
-      <pre><code>&lt;picture&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.avif&quot; /&gt;
-  &lt;source type=&quot;image/avif&quot; srcset=&quot;/images/image-1280-lossy.webp&quot; /&gt;
-  &lt;img
-    alt=&quot;Photograph of a group of pedestrians crossing the street.&quot;
-    width=&quot;1280&quot;
-    height=&quot;852&quot;
-    src=&quot;/images/image-1280-lossy.jpg 1280w&quot;
-  /&gt;
-&lt;/picture&gt;</code></pre>
+      <pre><code></code></pre>
     </details>
   </p>
 </div>
