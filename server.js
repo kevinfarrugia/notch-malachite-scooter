@@ -21,9 +21,9 @@ fastify.register(require("@fastify/http-proxy"), {
   prefix: "/fonts",
   disableCache: true,
   
-  // add a 1 second delay
+  // add a 500 millisecond delay
   preHandler: async function (_req, _res, next) {
-    await delay(1000);
+    await delay(500);
     next();
   }
 });
@@ -69,6 +69,7 @@ fastify.get("/1", function (request, reply) {
     step: 1,
     title: "Web Font",
     head: `<link rel='stylesheet' href='/open-sans.css'>
+<link rel="stylesheet" href="/style.css">
 <link rel='stylesheet' href='/fancy.css'>`
   };
 
@@ -83,6 +84,7 @@ fastify.get("/2", function (request, reply) {
     title: "preload",
     head: `<link rel="preload" as="font" href="/fonts/OpenSans-Regular.woff2?v=1676325285146" crossorigin>
 <link rel='stylesheet' href='/open-sans.css'>
+<link rel="stylesheet" href="/style.css">
 <link rel='stylesheet' href='/fancy.css'>`
   };
 
@@ -97,6 +99,7 @@ fastify.get("/3", function (request, reply) {
     title: "Unused preload",
     head: `<link rel="preload" as="font" href="/fonts/OpenSans-Regular.woff2?v=1676325285146">
 <link rel='stylesheet' href='/open-sans.css'>
+<link rel="stylesheet" href="/style.css">
 <link rel='stylesheet' href='/fancy.css'>`
   };
 
@@ -112,13 +115,12 @@ fastify.get("/4", function (request, reply) {
     head: `<style>
 @font-face {
   font-family: "Open Sans";
-  src: url("/fonts/OpenSans-Regular.woff2?v=1676325285146") format("woff2");
+  src: url("/fonts/OpenSans-Regular.woff2?v=1676325285146");
 }
 
 .fancy {
   font-family: "Open Sans", sans-serif;
 }
-
 </style>`
   };
 
@@ -130,7 +132,15 @@ fastify.get("/4", function (request, reply) {
 fastify.get("/5", function (request, reply) {
   let params = {
     step: 5,
-    title: "Lossless compression",
+    title: "Inline @font-face and external stylesheets",
+    head: `<style>
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular.woff2?v=1676325285146");
+}
+</style>
+<link rel="stylesheet" href="/style.css">
+<link rel='stylesheet' href='/fancy.css'>`
   };
 
   reply.view("/src/pages/5.hbs", params);
@@ -141,7 +151,10 @@ fastify.get("/5", function (request, reply) {
 fastify.get("/6", function (request, reply) {
   let params = {
     step: 6,
-    title: "The picture element",
+    title: "Google Fonts",
+    head: `<link rel="stylesheet" href="/style.css">
+<link rel='stylesheet' href='/fancy.css'>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">`
   };
 
   reply.view("/src/pages/6.hbs", params);
@@ -152,7 +165,12 @@ fastify.get("/6", function (request, reply) {
 fastify.get("/7", function (request, reply) {
   let params = {
     step: 7,
-    title: "The picture element and srcset",
+    title: "Google Fonts with preconnect",
+    head: `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<link rel='stylesheet' href='/fancy.css'>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">`
   };
 
   reply.view("/src/pages/7.hbs", params);
