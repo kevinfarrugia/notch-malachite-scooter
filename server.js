@@ -17,8 +17,8 @@ Handlebars.registerHelper(require("./helpers.js"));
 
 // create a proxy to direct requests to /images to cdn.glitch.global
 fastify.register(require("@fastify/http-proxy"), {
-  upstream: "https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351",
-  prefix: "/images",
+  upstream: "https://cdn.glitch.global/b6592dee-457d-4490-b17e-3afa965ee9ee/",
+  prefix: "/fonts",
   disableCache: true,
 });
 
@@ -33,9 +33,9 @@ fastify.register(require("@fastify/view"), {
   layout: "/src/partials/layout.hbs",
   options: {
     partials: {
+      heading: "/src/partials/heading.hbs",
       nav: "/src/partials/nav.hbs",
       footer: "/src/partials/footer.hbs",
-      heading: "/src/partials/heading.hbs",
     },
   },
   defaultContext: {
@@ -44,36 +44,12 @@ fastify.register(require("@fastify/view"), {
 });
 /** end: configure fastly **/
 
-// redirect URLs according to Accept header
-fastify.register(require("@fastify/reply-from"));
-
-fastify.get("/images-accept/*", function (request, reply) {
-  const { url } = request;
-  const filename = path.parse(url).name;
-
-  if (request.headers.accept) {
-    if (request.headers.accept.includes("image/avif")) {
-      return reply.from(
-        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.avif`
-      );
-    } else if (request.headers.accept.includes("image/webp")) {
-      return reply.from(
-        `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.webp`
-      );
-    }
-  }
-
-  return reply.from(
-    `https://cdn.glitch.global/5c7a461a-f9fa-4174-b79d-36b794063351/${filename}.jpg`
-  );
-});
-
 /** start: routes **/
 
 // welcome route
 fastify.get("/", function (request, reply) {
   let params = {
-    title: "Learn Performance - Images",
+    title: "Learn Performance - Fonts",
   };
 
   reply.view("/src/pages/index.hbs", params);
@@ -85,8 +61,8 @@ fastify.get("/", function (request, reply) {
 fastify.get("/1", function (request, reply) {
   let params = {
     step: 1,
-    title: "The <img> element",
-    head: `<script src="/script.js" defer></script>`
+    title: "Web Font",
+    head: "<link rel='stylesheet' href='/open-sans.css'>"
   };
 
   reply.view("/src/pages/1.hbs", params);
@@ -98,7 +74,6 @@ fastify.get("/2", function (request, reply) {
   let params = {
     step: 2,
     title: "srcset",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/2.hbs", params);
@@ -110,7 +85,6 @@ fastify.get("/3", function (request, reply) {
   let params = {
     step: 3,
     title: "sizes",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/3.hbs", params);
@@ -122,7 +96,6 @@ fastify.get("/4", function (request, reply) {
   let params = {
     step: 4,
     title: "Lossy compression",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/4.hbs", params);
@@ -134,7 +107,6 @@ fastify.get("/5", function (request, reply) {
   let params = {
     step: 5,
     title: "Lossless compression",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/5.hbs", params);
@@ -146,7 +118,6 @@ fastify.get("/6", function (request, reply) {
   let params = {
     step: 6,
     title: "The picture element",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/6.hbs", params);
@@ -158,7 +129,6 @@ fastify.get("/7", function (request, reply) {
   let params = {
     step: 7,
     title: "The picture element and srcset",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/7.hbs", params);
@@ -169,8 +139,6 @@ fastify.get("/7", function (request, reply) {
 fastify.get("/8", function (request, reply) {
   let params = {
     step: 8,
-    title: "Accept header",
-    head: `<script src="/script.js" defer></script>`
   };
 
   reply.view("/src/pages/8.hbs", params);

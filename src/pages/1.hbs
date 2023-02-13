@@ -1,114 +1,28 @@
 <div>
-  <p>
-    This demo includes an uncompressed image with an intrinsic width of 640px.
-    On a device with a viewport larger than 540px, the image is displayed at a
-    maximum of 640px. On devices with a smaller viewport, it is displayed at
-    <code>calc(100vw - 2rem)</code>.
-  </p>
-  <p>
-    Each demo also includes a script which is used to update the table beneath
-    the image. The
-    <i>Percentage Used</i>
-    is calculated as the
-    <code>(Display Width * Display Height) * DPR^2 / Intrinsic Width * Intrinsic
-      Height</code>.
-  </p>
-  <p>
-    For the script to work it downloads the image again, so if you have
-    <i>Disable cache</i>
-    selected then you would see duplicate requests in the Network tab on
-    DevTools.
-  </p>
-  <div class="gallery">
-    <div class="large">
-      <img
-        id="image"
-        alt="Photograph of a group of pedestrians crossing the street."
-        width="640"
-        height="426"
-        src="/images/image-640-uncompressed.jpg?v=1"
-      />
-    </div>
-  </div>
-  <div>
+  <div class="fancy">
     <p>
-      <strong>Image details:</strong>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac orci
+      dictum, dictum augue nec, semper sapien. Etiam efficitur a nisl sed
+      semper. Nam et venenatis risus, eget consequat odio. Praesent at purus
+      ligula. Pellentesque tincidunt lorem at augue mattis blandit. Cras at
+      ipsum augue. Duis vestibulum, ex eu commodo tristique, sem dui cursus
+      lorem, quis sollicitudin leo sem et dui. Integer nec pellentesque nisi.
+      Aliquam fringilla quam neque, eget volutpat nisi pharetra ac. Pellentesque
+      habitant morbi tristique senectus et netus et malesuada fames ac turpis
+      egestas.
     </p>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            File
-          </td>
-          <td id="currentSrc">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Size
-          </td>
-          <td id="decodedBodySize">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Intrinsic Width
-          </td>
-          <td id="naturalWidth">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Intrinsic Height
-          </td>
-          <td id="naturalHeight">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Display Width
-          </td>
-          <td id="clientWidth">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Display Height
-          </td>
-          <td id="clientHeight">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            DPR
-          </td>
-          <td id="dpr">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Percentage Used
-          </td>
-          <td id="usedPercentage">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <p>
+      Praesent blandit eu ex nec volutpat. Cras vitae ex dui. Nunc venenatis
+      erat in lacus gravida vehicula. Nulla bibendum sit amet dui vitae
+      scelerisque. Cras in est erat. Nunc convallis libero sed ipsum blandit, eu
+      consectetur neque finibus. Donec sit amet pretium nibh. Aliquam non elit
+      ipsum. Aenean dignissim nec dui sit amet sollicitudin. Donec consequat
+      nisl metus, quis maximus velit venenatis a. Phasellus mi libero, euismod
+      sed turpis vel, finibus cursus lectus. Vivamus accumsan rhoncus elementum.
+      Sed pretium felis nec purus dapibus, viverra luctus erat pharetra. Donec
+      eu rhoncus velit, eget dictum odio. Fusce in lacinia lacus.
+    </p>
   </div>
-  <p>
-    If you look at the table above, you could see that the image size is 445 KB
-    and it's resolution is 640px x 426px. The area it is displayed in, marked as
-    Display Width and Display Height is dependent on your device's viewport. The
-    DPR shows your the device-pixel ratio of your device.
-  </p>
-  <p>
-    If the
-    <i>Percentage Used</i>
-    is greater than 100%, then the image is smaller than the area in which it is
-    rendered. If the
-    <i>Percentage Used</i>
-    is less than 100%, then it is bigger than the area in which it is rendered..
-  </p>
   {{! prettier-ignore }}
   <p>
     <details>
