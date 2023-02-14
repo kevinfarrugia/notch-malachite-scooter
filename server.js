@@ -12,13 +12,13 @@ const fastify = require("fastify")({
 
 // create a proxy to direct requests to /images to cdn.glitch.global
 fastify.register(require("@fastify/http-proxy"), {
-  upstream: "https://cdn.glitch.global/b6592dee-457d-4490-b17e-3afa965ee9ee/",
+  upstream: "https://cdn.glitch.global/b1719fef-02fe-465c-bde6-5da8fa0bbd91/",
   prefix: "/fonts",
   disableCache: true,
   
   // add a 1000 millisecond delay
   preHandler: async function (_req, _res, next) {
-    await delay(1000);
+    await delay(600);
     next();
   }
 });
@@ -62,6 +62,14 @@ fastify.get("/4", function (request, reply) {
   let params = {};
   
   reply.view("/src/pages/index-4.hbs", params);
+
+  return reply;
+});
+
+fastify.get("/5", function (request, reply) {
+  let params = {};
+  
+  reply.view("/src/pages/index-5.hbs", params);
 
   return reply;
 });
