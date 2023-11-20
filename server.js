@@ -74,6 +74,14 @@ fastify.get("/5", function (request, reply) {
   return reply;
 });
 
+fastify.get("/6", function (request, reply) {
+  let params = {};
+  
+  reply.view("/src/pages/index-6.hbs", params);
+
+  return reply;
+});
+
 // start the fastify server
 fastify.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
