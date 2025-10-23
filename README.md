@@ -5,7 +5,7 @@
 
 ## Step to Reproduce
 
-1. Disable cache and navigate to [https://notch-malachite-scooter.glitch.me/](https://notch-malachite-scooter.glitch.me/). The page contains the following CSS:
+1. Disable cache and navigate to [http://0.0.0.0:PORT/](http://0.0.0.0:PORT/). The page contains the following CSS:
 
 ```
 @font-face {  
@@ -25,7 +25,7 @@ p {
 Tested on Ubuntu and MacOS (stable and dev channels).
 
 **Problem Description:**  
-Demo: [https://notch-malachite-scooter.glitch.me/](https://notch-malachite-scooter.glitch.me/)
+Demo: [http://0.0.0.0:PORT/](http://0.0.0.0:PORT/)
 
 As per spec ([https://drafts.csswg.org/css-fonts-4/#font-display-desc](https://drafts.csswg.org/css-fonts-4/#font-display-desc)), "an optional font must never cause the layout of the page to "jump" as it loads in".
 
@@ -35,7 +35,7 @@ I would expect that when using `font-display: optional` it would not cause any
 
 ---
 
-Demo: [https://notch-malachite-scooter.glitch.me/4](https://notch-malachite-scooter.glitch.me/4)
+Demo: [http://0.0.0.0:PORT/4](http://0.0.0.0:PORT/4)
 
 In the above demo, the page contains the following CSS snippet:
 
@@ -51,8 +51,8 @@ The font file Zeyada-Regular refers to the cursive font found here: [https://fo
 
 When using `font-display: optional`, if the page does not download the font in time, it will swap to the locally installed Open Sans, causing a layout shift as well as incorrectly using the local font file.
 
-If you refresh the page (cache enabled) then you will be able to recognize the different font. I have prepared a demo page which does not use `font-display: optional` to help recognize the different font-family: [https://notch-malachite-scooter.glitch.me/5](https://notch-malachite-scooter.glitch.me/5).
-1. Disable cache and navigate to [https://notch-malachite-scooter.glitch.me/](https://notch-malachite-scooter.glitch.me/). The page contains the following CSS:
+If you refresh the page (cache enabled) then you will be able to recognize the different font. I have prepared a demo page which does not use `font-display: optional` to help recognize the different font-family: [http://0.0.0.0:PORT/5](http://0.0.0.0:PORT/5).
+1. Disable cache and navigate to [http://0.0.0.0:PORT/](http://0.0.0.0:PORT/). The page contains the following CSS:
 
 ```
 @font-face {  
@@ -72,7 +72,7 @@ p {
 Tested on Ubuntu and MacOS (stable and dev channels).
 
 **Problem Description:**  
-Demo: [https://notch-malachite-scooter.glitch.me/](https://notch-malachite-scooter.glitch.me/)
+Demo: [http://0.0.0.0:PORT/](http://0.0.0.0:PORT/)
 
 As per spec ([https://drafts.csswg.org/css-fonts-4/#font-display-desc](https://drafts.csswg.org/css-fonts-4/#font-display-desc)), "an optional font must never cause the layout of the page to "jump" as it loads in".
 
@@ -82,7 +82,7 @@ I would expect that when using `font-display: optional` it would not cause any
 
 ---
 
-Demo: [https://notch-malachite-scooter.glitch.me/4](https://notch-malachite-scooter.glitch.me/4)
+Demo: [http://0.0.0.0:PORT/4](http://0.0.0.0:PORT/4)
 
 In the above demo, the page contains the following CSS snippet:
 
@@ -98,4 +98,4 @@ The font file Zeyada-Regular refers to the cursive font found here: [https://fo
 
 When using `font-display: optional`, if the page does not download the font in time, it will swap to the locally installed Open Sans, causing a layout shift as well as incorrectly using the local font file.
 
-If you refresh the page (cache enabled) then you will be able to recognize the different font. I have prepared a demo page which does not use `font-display: optional` to help recognize the different font-family: [https://notch-malachite-scooter.glitch.me/5](https://notch-malachite-scooter.glitch.me/5).
+If you refresh the page (cache enabled) then you will be able to recognize the different font. I have prepared a demo page which does not use `font-display: optional` to help recognize the different font-family: [http://0.0.0.0:PORT/5](http://0.0.0.0:PORT/5).
